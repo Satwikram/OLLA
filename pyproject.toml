@@ -1,0 +1,22 @@
+[project]
+name = "gui-automation"
+version = "0.1.0"
+description = "GUI Automation using LLMs"
+authors = [
+    {name = "Satwik Ram"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pywinauto (>=0.6.9,<0.7.0)",
+    "speechrecognition (>=3.14.3,<4.0.0)",
+    "pipwin (>=0.5.2,<0.6.0)",
+    "pyaudio (>=0.2.14,<0.3.0)",
+    "pyttsx3 (>=2.98,<3.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
