@@ -1,0 +1,21 @@
+import pygetwindow as gw
+from pywinauto.application import Application
+from io import StringIO
+from contextlib import redirect_stdout
+
+active_window = gw.getActiveWindow()
+
+app = Application(backend="uia").connect(title=active_window.title, visible_only=False)
+window = app.window(title=active_window.title)
+
+dialog = app.top_window()  
+dialog.set_focus()
+output = StringIO()
+
+with redirect_stdout(output):
+    dialog.print_control_identifiers()
+
+control_identifiers_output = output.getvalue()
+
+with open("tree.txt", "w+", encoding="utf-8") as f:
+    f.write(control_identifiers_output)
