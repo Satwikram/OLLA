@@ -1,5 +1,5 @@
 [project]
-name = "gui-automation"
+name = "gui-automation-using-llms"
 version = "0.1.0"
 description = "GUI Automation using LLMs"
 authors = [
@@ -7,8 +7,9 @@ authors = [
 ]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11,<4.0"
 dependencies = [
+    "langchain (>=0.3.26,<0.4.0)",
     "pywinauto (>=0.6.9,<0.7.0)",
     "speechrecognition (>=3.14.3,<4.0.0)",
     "pipwin (>=0.5.2,<0.6.0)",
