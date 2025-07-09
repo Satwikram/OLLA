@@ -51,7 +51,7 @@ Return only the JSON with these keys:
 - "reason"
 - "complete"
 
-Example Output:
+Example Output Format:
 
 {{
   "control_type": "Button",
@@ -65,6 +65,8 @@ Example Output:
   "reason": "Selected because the element's title exactly matches 'Minimize' and it is a Button control type, which aligns with the expected target for minimizing the window. Coordinates included as no unique auto_id is available." 
   "complete": "Yes"
 }}
+
+You need to strictly follow this format. No extra keys. Provide only JSON output.
 
 Current UI Tree: {ui_tree}
 
