@@ -4,14 +4,17 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.output_parsers import JsonOutputParser
+from typing import Optional
+
 
 
 from .agents.solver.prompt import *
 import os
 
 class UIAction(BaseModel):
-    action: str = Field(description="Action to perform, e.g., click, type, select")
+    action: str = Field(description="Action to perform, e.g., click, type, select, toggle")
     element_id: str = Field(description="The id of the element in the UI tree")
+    value: Optional[str] = Field(default=None, description="Value for toggle/select actions")
 
 class MultiAgent:
 
@@ -27,12 +30,13 @@ class MultiAgent:
         self.solver_llm = ChatOpenAI(model=self.model, temperature=0)
 
         # Create a prompt template
-        self.solver_prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are a helpful assistant that maps user commands to UI actions."),
-            MessagesPlaceholder(variable_name="history"),
-            ("user", "{ui_tree}\n\nQuestion: {command}\n\nRespond in JSON format:"),
-            ("user", self.solver_json_parser.get_format_instructions())
+        self.prompt = ChatPromptTemplate.from_messages([
+            ("system", "You are a UI automation assistant. Given a UI tree and a user command, output the next action in JSON."),
+            MessagesPlaceholder("history"),  # Keeps track of previous turns
+            ("user", "Here is the current UI tree:\n{ui_tree}\n\nUser command:\n{command}"),
+            ("user", f"Respond exactly in this JSON format:\n{self.parser.get_format_instructions()}")
         ])
+
 
         #Create a store to hold chat histories
         self.store = {}
