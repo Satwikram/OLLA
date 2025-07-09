@@ -8,9 +8,6 @@ So far, the following actions have been taken:
 - Clicked Insert
 - Clicked Table
 
-The current UI tree is:
-{ui_tree}
-
 Based on the goal and previous steps, predict the next action to move towards completing the task.
 
 Output as JSON in this format:
