@@ -59,16 +59,13 @@ class MultiAgent:
         return output["messages"][-1] # output contains all messages in state
 
 
-# obj1 = MultiAgent()
+obj1 = MultiAgent()
 obj2 = UIManager()
 
 ui_tree = obj2.get_ui_tree()
 
-with open("tree.txt", "w+", encoding="utf-8") as f:
-    f.write(ui_tree) 
+config = {"configurable": {"thread_id": "abc123"}}
+query = "Task: I want to insert a Table"
 
-# config = {"configurable": {"thread_id": "abc123"}}
-# query = "Click on Insert"
-
-# output = obj1.get_solver_response(query, ui_tree, config)
-# print("LLM Response:", output.content)
+output = obj1.get_solver_response(query, ui_tree, config)
+print("LLM Response:", output.content)
