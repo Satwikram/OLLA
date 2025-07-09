@@ -26,3 +26,20 @@ class UIManager:
         ui_tree = output.getvalue()
 
         return ui_tree
+    
+    def simulate(self, element_data):
+
+        """
+        Simulates a click on the element specified in element_data.
+        """
+        try:
+            element = self.window.child_window(
+                control_type=element_data["control_type"],
+                title=element_data["title"]
+            )
+
+            element.wait('exists', timeout=5)
+            element.click_input()
+
+        except Exception as e:
+            print("Error:", e)
