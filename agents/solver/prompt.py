@@ -12,8 +12,6 @@ Based on the goal and previous steps, predict the next action to move towards co
 
 Output as JSON in this format:
 
-{format_instructions}
-
 If the task is complete, return:
 
 {{
@@ -22,5 +20,7 @@ If the task is complete, return:
   "value": null,
   "reason": "Explain why the task is now complete"
 }}
+
+Current UI Tree: {ui_tree}
 
 """
