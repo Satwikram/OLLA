@@ -74,5 +74,4 @@ print("LLM Response:", output.content, type(output.content))
 
 element_data = json.loads(output.content)
 
-print(element_data["title"])
-print(element_data["reason"])
+obj2.simulate(element_data)
