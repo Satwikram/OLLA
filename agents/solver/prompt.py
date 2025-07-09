@@ -4,16 +4,6 @@ You are a UI task automation agent.
 
 Based on the user's query, predict the next action to move towards completing the task.
 
-Output as JSON in this format:
-
-{{
-  "action": "",
-  "element_id": ,
-  "value": ,
-  "reason": ""
-  "complete" ""
-}}
-
 How to understand the tree?
 The tree will have elements with hierarchal structure.
 
@@ -45,6 +35,36 @@ This UI element represents a tab called "Home" in an application.
    - title="Home": The visible label used to identify the element.
    - auto_id="TabHome": A unique automation identifier, usually stable.
    - control_type="TabItem": The type of control.
+
+Given a UI tree element description, return a JSON containing:
+
+1. The control type (`control_type`)  
+2. The title (`title`)  
+3. The bounding rectangle as four integers: left (L), top (T), right (R), bottom (B)
+4. reason: A concise explanation of WHY this element matches the target and why it is suitable for automation
+5. If the task is complete or not. If it is complete, mark "Yes"; otherwise, mark "No".
+
+Return only the JSON with these keys:  
+- "control_type"  
+- "title"  
+- "rect": { "left": L, "top": T, "right": R, "bottom": B }
+- "reason"
+- "complete"
+
+Example Output:
+
+{{
+  "control_type": "Button",
+  "title": "Minimize",
+  "rect": {{
+    "left": 3696,
+    "top": 0,
+    "right": 3744,
+    "bottom": 48
+  }},
+  "reason": "Selected because the element's title exactly matches 'Minimize' and it is a Button control type, which aligns with the expected target for minimizing the window. Coordinates included as no unique auto_id is available." 
+  "complete": "Yes"
+}}
 
 Current UI Tree: {ui_tree}
 
