@@ -22,8 +22,7 @@ def listen_for_command():
         try:
             # Use Google's speech-to-text API to convert speech to text
             command = r.recognize_google(audio)
-            print(f"You said: {command}")  # Print recognized command
-            speak(f"Command recognized: {command}")  # Read it aloud
+            speak(f"You said: {command}")  # Read it aloud
             return command
         except sr.UnknownValueError:
             print("Sorry, I didn't catch that.")
