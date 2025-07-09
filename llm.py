@@ -14,7 +14,7 @@ import os
 class UIAction(BaseModel):
     action: str = Field(description="Action to perform, e.g., click, type, select, toggle")
     element_id: str = Field(description="The id of the element in the UI tree")
-    value: Optional[str] = Field(default=None, description="Value for toggle/select actions")
+    value: Optional[str] = Field(default=None, description="The value to set (for editable fields)")
     reason: str = Field(description="Explain why this action was chosen")
 
 class MultiAgent:
