@@ -1,7 +1,7 @@
 [project]
-name = "gui-automation-using-llms"
+name = "ui-automation-using-llms"
 version = "0.1.0"
-description = "GUI Automation using LLMs"
+description = ""
 authors = [
     {name = "Satwik Ram"}
 ]
@@ -10,14 +10,8 @@ readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
     "langchain (>=0.3.26,<0.4.0)",
-    "pywinauto (>=0.6.9,<0.7.0)",
-    "speechrecognition (>=3.14.3,<4.0.0)",
-    "pipwin (>=0.5.2,<0.6.0)",
-    "pyaudio (>=0.2.14,<0.3.0)",
-    "pyttsx3 (>=2.98,<3.0)",
-    "keyboard (>=0.13.5,<0.14.0)",
-    "pygetwindow (>=0.0.9,<0.0.10)",
-    "langchain-openai (>=0.3.27,<0.4.0)"
+    "langchain-openai (>=0.3.27,<0.4.0)",
+    "langgraph (>=0.5.2,<0.6.0)"
 ]
 
 
