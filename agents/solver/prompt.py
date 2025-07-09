@@ -1,1 +1,29 @@
-solver_prompt = ""
+solver_prompt = """
+
+You are a UI task automation agent.
+
+The user's goal is: "Insert a table with two rows and three columns".
+
+So far, the following actions have been taken:
+- Clicked Insert
+- Clicked Table
+
+The current UI tree is:
+{ui_tree}
+
+Based on the goal and previous steps, predict the next action to move towards completing the task.
+
+Output as JSON in this format:
+
+{format_instructions}
+
+If the task is complete, return:
+
+{{
+  "action": "done",
+  "element_id": null,
+  "value": null,
+  "reason": "Explain why the task is now complete"
+}}
+
+"""
