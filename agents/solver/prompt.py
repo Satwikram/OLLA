@@ -47,7 +47,7 @@ Given a UI tree element description, return a JSON containing:
 Return only the JSON with these keys:  
 - "control_type"  
 - "title"  
-- "rect": { "left": L, "top": T, "right": R, "bottom": B }
+- "rect": {{ "left": L, "top": T, "right": R, "bottom": B }}
 - "reason"
 - "complete"
 
