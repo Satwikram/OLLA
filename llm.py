@@ -10,6 +10,7 @@ from typing_extensions import Annotated, TypedDict
 
 import os
 from agents.solver.prompt import *
+from ui_automation.ui_manager import *
 
 class State(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
@@ -45,7 +46,7 @@ class MultiAgent:
 
 
     # Define the function that calls the model
-    def call_model(self, state: MessagesState):
+    def call_model(self, state: State):
         prompt = self.prompt_template.invoke(state)
         response = self.solver_llm.invoke(prompt)
         return {"messages": [response]}
@@ -58,14 +59,16 @@ class MultiAgent:
         return output["messages"][-1] # output contains all messages in state
 
 
-obj = MultiAgent()
-config = {"configurable": {"thread_id": "abc123"}}
-query = "My name is Satwik"
+# obj1 = MultiAgent()
+obj2 = UIManager()
 
-output = obj.get_solver_response(query, config)
-print("LLM Response:", output.content)
+ui_tree = obj2.get_ui_tree()
 
-query = "Do you know my name?"
-output = obj.get_solver_response(query, config)
-print("LLM Response:", output.content)
+with open("tree.txt", "w+", encoding="utf-8") as f:
+    f.write(ui_tree) 
 
+# config = {"configurable": {"thread_id": "abc123"}}
+# query = "Click on Insert"
+
+# output = obj1.get_solver_response(query, ui_tree, config)
+# print("LLM Response:", output.content)
