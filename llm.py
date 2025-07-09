@@ -1,67 +1,52 @@
-from langchain_core.chat_history import InMemoryChatMessageHistory
-from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain_openai import ChatOpenAI
+from langchain.chat_models import init_chat_model
+from langchain_core.messages import HumanMessage
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import START, MessagesState, StateGraph
+
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.pydantic_v1 import BaseModel, Field
-from langchain_core.output_parsers import JsonOutputParser
-from typing import Optional
 
-
-
-from .agents.solver.prompt import *
 import os
-
-class UIAction(BaseModel):
-    action: str = Field(description="Action to perform, e.g., click, type, select, toggle")
-    element_id: str = Field(description="The id of the element in the UI tree")
-    value: Optional[str] = Field(default=None, description="The value to set (for editable fields)")
-    reason: str = Field(description="Explain why this action was chosen")
 
 class MultiAgent:
 
-    def __init__(self) -> None:
+    def __init__(self):
 
-        # MODEL
-        self.model = os.environ.get("MODEL")
-
-        # Create JSON output parser for UIAction
-        self.solver_json_parser = JsonOutputParser(pydantic_object=UIAction)
-
-        #Initiate Solver LLM
-        self.solver_llm = ChatOpenAI(model=self.model, temperature=0)
-
-        # Create a prompt template
-        self.prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are a UI automation assistant. Given a UI tree and a user command, output the next action in JSON."),
-            MessagesPlaceholder("history"),  # Keeps track of previous turns
-            ("user", "Here is the current UI tree:\n{ui_tree}\n\nUser command:\n{command}"),
-            ("user", f"Respond exactly in this JSON format:\n{self.parser.get_format_instructions()}")
-        ])
-
-
-        #Create a store to hold chat histories
-        self.store = {}
-
-    def get_session_history(self, session_id: str):
-        if session_id not in self.store:
-            self.store[session_id] = InMemoryChatMessageHistory()
-        return self.store[session_id]
-
-
-    def get_solver_response(self, ui_tree, command: str, session_id: str):
+        self.model_name = os.environ.get("MODEL")
         
-        chain = self.solver_prompt | self.solver_llm | self.solver_json_parser
+        self.solver_llm = init_chat_model(self.model_name, model_provider="openai")
 
-        chat_chain = RunnableWithMessageHistory(
-            chain,
-            self.get_session_history,
-            input_messages_key=["command", "ui_tree"],
-            history_messages_key="history"
-        )
+        # Define a new state graph
+        self.workflow = StateGraph(state_schema=MessagesState)
 
-        response = chat_chain.invoke(
-            {"ui_tree": ui_tree, "command": command},
-            config={"configurable": {"session_id": session_id}}
-        )
+        # Define the (single) node in the graph
+        self.workflow.add_edge(START, "model")
+        self.workflow.add_node("model", self.call_model)
 
-        return response
+        # Add memory
+        memory = MemorySaver()
+        self.app = self.workflow.compile(checkpointer=memory)
+
+    # Define the function that calls the model
+    def call_model(self, state: MessagesState):
+        response = self.solver_llm.invoke(state["messages"])
+        return {"messages": response}
+    
+    def get_solver_response(self, query, config):
+
+        input_messages = [HumanMessage(query)]
+        output = self.app.invoke({"messages": input_messages}, config)
+        
+        return output["messages"][-1] # output contains all messages in state
+
+
+obj = MultiAgent()
+config = {"configurable": {"thread_id": "abc123"}}
+query = "My name is Satwik"
+
+output = obj.get_solver_response(query, config)
+print("LLM Response:", output.content)
+
+query = "Do you know my name?"
+output = obj.get_solver_response(query, config)
+print("LLM Response:", output.content)
+
