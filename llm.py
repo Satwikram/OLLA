@@ -12,6 +12,8 @@ import os
 from agents.solver.prompt import *
 from ui_automation.ui_manager import *
 
+import json
+
 class State(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
     ui_tree: str
@@ -68,4 +70,9 @@ config = {"configurable": {"thread_id": "abc123"}}
 query = "Task: I want to insert a Table"
 
 output = obj1.get_solver_response(query, ui_tree, config)
-print("LLM Response:", output.content)
+print("LLM Response:", output.content, type(output.content))
+
+element_data = json.loads(output.content)
+
+print(element_data["title"])
+print(element_data["reason"])
