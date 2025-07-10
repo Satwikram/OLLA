@@ -64,14 +64,30 @@ class MultiAgent:
 obj1 = MultiAgent()
 obj2 = UIManager()
 
+
 ui_tree = obj2.get_ui_tree()
 
 config = {"configurable": {"thread_id": "abc123"}}
-query = "Task: I want to insert a Table"
+query = "Task: Change Margins to Narrow"
 
 output = obj1.get_solver_response(query, ui_tree, config)
 print("LLM Response:", output.content, type(output.content))
+print("---"*40)
 
 element_data = json.loads(output.content)
 
 obj2.simulate(element_data)
+title = element_data["title"]
+print(f"Clicked: {title}") 
+print("---"*40)
+
+while element_data["complete"] == "Yes":
+
+    output = obj1.get_solver_response(query, ui_tree, config)
+    print("LLM Response:", output.content, type(output.content))
+    print("---"*40)
+
+    obj2.simulate(element_data)
+    title = element_data["title"]
+    print(f"Clicked: {title}")
+    print("---"*40)
