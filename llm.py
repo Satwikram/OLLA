@@ -59,35 +59,3 @@ class MultiAgent:
         output = self.app.invoke({"messages": input_messages, "ui_tree": ui_tree}, config)
 
         return output["messages"][-1] # output contains all messages in state
-
-
-obj1 = MultiAgent()
-obj2 = UIManager()
-
-
-ui_tree = obj2.get_ui_tree()
-
-config = {"configurable": {"thread_id": "abc123"}}
-# query = "Task: Change Margins to Narrow"
-query = "Task: Add a new comment"
-
-
-output = obj1.get_solver_response(query, ui_tree, config)
-print("LLM Response:", output.content, type(output.content))
-print("---"*40)
-
-element_data = json.loads(output.content)
-
-obj2.simulate(element_data)
-title = element_data["title"]
-
-while element_data["complete"] == "Yes":
-
-    output = obj1.get_solver_response(query, ui_tree, config)
-    print("LLM Response:", output.content, type(output.content))
-    print("---"*40)
-
-    obj2.simulate(element_data)
-    title = element_data["title"]
-    print(f"Clicked: {title}")
-    print("---"*40)
