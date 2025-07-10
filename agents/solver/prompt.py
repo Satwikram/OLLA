@@ -28,6 +28,7 @@ What to return:
 Return a single JSON object with these fields:
 
 {{
+  "found": "Element found in the tree or not",
   "control_type": "Element's control type",
   "title": "Element's visible title",
   "rect": {{
@@ -48,15 +49,17 @@ How to decide if the task is complete:
 ---
 
 Strict instructions:
-- Do not guess. Only return an element from the provided UI tree.
+- Do not guess. Only return an element from the provided UI tree. 
 - Return valid JSON only. No extra text, explanations, or formatting.
 - Your response must exactly match the JSON structure above.
+- Return correct control_type.
 
 ---
 
 Example output:
 
 {{
+  ""found": "Yes",
   "control_type": "Button",
   "title": "Minimize",
   "rect": {{
@@ -67,6 +70,17 @@ Example output:
   }},
   "reason": "I can see 'Minimize' button in the provided UI tree, and also, element's title exactly matches 'Minimize'; it is a Button control, which matches the expected action for minimizing the window. Coordinates included since no auto_id is available.",
   "complete": "Yes"
+}}
+
+If no relevant element is found in the UI tree:
+
+{{
+  "found": "No",
+  "control_type": null,
+  "title": null,
+  "rect": null,
+  "reason": "No matching element found in the current UI tree that would lead to commplete the user's task",
+  "complete": "No"
 }}
 
 ---
