@@ -42,5 +42,8 @@ class UIManager:
             element.click_input()
             print(f"Clicked on element using control_type='{element_data['control_type']}' and title='{element_data['title']}'.")
 
+            return 1
+
         except Exception as e:
             print("Error:", e)
+            return 0
