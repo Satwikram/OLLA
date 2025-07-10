@@ -19,16 +19,18 @@ def predict_action(query):
 
     element_data = json.loads(content)
 
-    obj2.simulate(element_data)
+    simulated = obj2.simulate(element_data)
     steps.append(element_data["title"])
 
-    if element_data["complete"] == "No":
-        predict_action(query)
+    if simulated == 1:
+        if element_data["complete"] == "No":
+            predict_action(query)
+    else:
+        print("The program failed!!")
+        return 0
 
 query = "Task: Change Margins to Narrow"
 # query = "Task: Add a new comment"
-
-# predicted_action = predict_action(query, ui_tree)
 
 predict_action(query)
 print(steps)
