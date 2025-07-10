@@ -47,3 +47,11 @@ class UIManager:
         except Exception as e:
             print("Error:", e)
             return 0
+
+obj = UIManager()
+element_data = {
+
+    "title": "Review",
+    "control_type": "Button",
+}
+obj.simulate(element_data)
