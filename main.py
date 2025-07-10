@@ -25,8 +25,8 @@ def predict_action(query):
     if element_data["complete"] == "No":
         predict_action(query)
 
-# query = "Task: Change Margins to Narrow"
-query = "Task: Add a new comment"
+query = "Task: Change Margins to Narrow"
+# query = "Task: Add a new comment"
 
 # predicted_action = predict_action(query, ui_tree)
 
