@@ -23,14 +23,14 @@ def predict_action(query):
         simulated = obj2.simulate(element_data)
         steps.append(element_data["title"])
 
-        if simulated == 1:
-            if element_data["complete"] == "No":
-                predict_action(query)
-        else:
-            print("The program failed!!")
-            return 0
-    else:
-        print("Did not find any relevant control element")
+    #     if simulated == 1:
+    #         if element_data["complete"] == "No":
+    #             predict_action(query)
+    #     else:
+    #         print("The program failed!!")
+    #         return 0
+    # else:
+    #     print("Did not find any relevant control element")
 
 # query = "Task: Change Margins to Narrow"
 # query = "Task: Add a new comment"
@@ -39,3 +39,4 @@ query = "Task: Center the alignment for the text"
 
 predict_action(query)
 print(steps)
+print("Do you my previous command and the output?")
