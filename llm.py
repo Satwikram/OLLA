@@ -12,8 +12,6 @@ import os
 from agents.solver.prompt import *
 from ui_automation.ui_manager import *
 
-import json
-
 class State(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
     ui_tree: str
