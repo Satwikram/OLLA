@@ -11,6 +11,7 @@ steps = []
 def predict_action(query):
 
     ui_tree = obj2.get_ui_tree()
+    print("UI Tree:", ui_tree)
 
     output = obj1.get_solver_response(query, ui_tree, config)
     content = output.content
