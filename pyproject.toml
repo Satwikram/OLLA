@@ -20,7 +20,9 @@ dependencies = [
     "pywin32 (>=310,<311)",
     "playsound (==1.2.2)",
     "gtts (>=2.5.4,<3.0.0)",
-    "python-dotenv (>=1.1.1,<2.0.0)"
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "vosk (>=0.3.45,<0.4.0)",
+    "pyaudio (>=0.2.14,<0.3.0)"
 ]
 
 
