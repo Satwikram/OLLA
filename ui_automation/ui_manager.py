@@ -44,8 +44,9 @@ class UIManager:
 
             element.wait('exists', timeout=5)
 
-            self.engine.say(f"Verified -- the {element_data['title']} element is present.")
-            self.engine.say(f"Clicking on the {element_data['title']} element now --  {element_data['reason']}")
+            self.engine.say(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
+            self.engine.say(f"Verified -- the {element_data['title']} element is present, clicking on it now.")
+
             self.engine.runAndWait() 
 
             element.click_input()
