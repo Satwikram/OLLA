@@ -2,10 +2,14 @@ import pygetwindow as gw
 from pywinauto.application import Application
 from io import StringIO
 from contextlib import redirect_stdout
+import pyttsx3
+
 
 class UIManager:
 
     def __init__(self):
+
+        self.engine = pyttsx3.init()
 
         self.active_window = gw.getActiveWindow()
         self.app = Application(backend="uia").connect(title=self.active_window.title, visible_only=False)
@@ -39,6 +43,11 @@ class UIManager:
             )
 
             element.wait('exists', timeout=5)
+
+            self.engine.say(f"Verified -- the {element_data['title']} element is present.")
+            self.engine.say(f"Clicking on the {element_data['title']} element now --  {element_data['reason']}")
+            self.engine.runAndWait() 
+
             element.click_input()
             print(f"Clicked on element using control_type='{element_data['control_type']}' and title='{element_data['title']}'.")
 
