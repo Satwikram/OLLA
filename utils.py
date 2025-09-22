@@ -1,20 +1,35 @@
 import pyttsx3
-# class Utils:
+import time
 
-#     def __init__(self):
-#         # Function to speak text
-#         self.engine = pyttsx3.init()
+
+class Utils:
+
+    def __init__(self):
+        # Function to speak text
+        self.engine = pyttsx3.init()
 
     
-#     def speak(self, text):
-#         self.engine.say(text)
-#         self.engine.runAndWait()
+    def speak(self, text):
+        self.engine.stop()
+        self.engine.say(text)
+        self.engine.runAndWait()
 
-# obj = Utils()
+    def base36(self, n: int) -> str:
 
-# obj.speak("Hi, How are you? Satwik !")
-# print("Done")
+        ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz'
 
-engine = pyttsx3.init()
-engine.say("Hello, this is an announcement.")
-engine.runAndWait()
+        if n == 0: return '0'
+        s = []
+        while n:
+            n, r = divmod(n, 36)
+            s.append(ALPHABET[r])
+
+        return ''.join(reversed(s))
+
+    def time_id_ms(self) -> str:
+        
+        return self.base36(int(time.time() * 1000))
+
+# engine = pyttsx3.init()
+# engine.say("Hello, this is an announcement.")
+# engine.runAndWait()
