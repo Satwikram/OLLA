@@ -2,10 +2,15 @@ from llm import MultiAgent
 from ui_automation.ui_manager import *
 import json
 
+from utils import *
+
 obj1 = MultiAgent()
 obj2 = UIManager()
+obj3 = Utils()
 
-config = {"configurable": {"thread_id": "abc123"}}
+id = obj3.time_id_ms()
+
+config = {"configurable": {"thread_id": id}}
 steps = []
 
 def predict_action(query):
