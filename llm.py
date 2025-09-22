@@ -12,6 +12,10 @@ import os
 from agents.solver.prompt import *
 from ui_automation.ui_manager import *
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 class State(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
     ui_tree: str
