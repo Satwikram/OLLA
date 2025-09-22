@@ -24,6 +24,8 @@ class MultiAgent:
         
         self.solver_llm = init_chat_model(self.model_name, model_provider="openai")
 
+        print(f"Using model: {self.model_name}")
+
         # Define a new state graph
         self.workflow = StateGraph(state_schema=State)
 
