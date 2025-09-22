@@ -4,7 +4,6 @@ from io import StringIO
 from contextlib import redirect_stdout
 import pyttsx3
 
-
 class UIManager:
 
     def __init__(self):
@@ -58,10 +57,10 @@ class UIManager:
             print("Error:", e)
             return 0
 
-obj = UIManager()
-element_data = {
+# obj = UIManager()
+# element_data = {
 
-    "title": "Review",
-    "control_type": "Button",
-}
-obj.simulate(element_data)
+#     "title": "Review",
+#     "control_type": "Button",
+# }
+# obj.simulate(element_data)
