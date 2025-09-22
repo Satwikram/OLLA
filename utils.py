@@ -29,7 +29,3 @@ class Utils:
     def time_id_ms(self) -> str:
         
         return self.base36(int(time.time() * 1000))
-
-# engine = pyttsx3.init()
-# engine.say("Hello, this is an announcement.")
-# engine.runAndWait()
