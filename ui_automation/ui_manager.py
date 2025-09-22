@@ -3,12 +3,13 @@ from pywinauto.application import Application
 from io import StringIO
 from contextlib import redirect_stdout
 import pyttsx3
+from utils import *
 
 class UIManager:
 
     def __init__(self):
 
-        self.engine = pyttsx3.init()
+        self.util = Utils()
 
         self.active_window = gw.getActiveWindow()
         self.app = Application(backend="uia").connect(title=self.active_window.title, visible_only=False)
@@ -43,10 +44,8 @@ class UIManager:
 
             element.wait('exists', timeout=5)
 
-            self.engine.say(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
-            self.engine.say(f"Verified -- the {element_data['title']} element is present, clicking on it now.")
-
-            self.engine.runAndWait() 
+            self.util.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
+            self.util.speak(f"Verified -- the {element_data['title']} element is present, clicking on it now.")
 
             element.click_input()
             print(f"Clicked on element using control_type='{element_data['control_type']}' and title='{element_data['title']}'.")
