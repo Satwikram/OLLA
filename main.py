@@ -37,8 +37,9 @@ def predict_action(query):
     else:
         print("Did not find any relevant control element")
 
-query = "Task: Change Margins to Narrow"
-# query = "Task: Add a new comment"
+# query = "Task: Change Margins to Narrow"
+query = "Task: Change the font size to 14.5"
+# query = "Task: Add a new comment with text 'Check this section'"
 # query = "Task: Center the alignment for the text"
 # query = "Task: Change the mode to Reviewing"
 
