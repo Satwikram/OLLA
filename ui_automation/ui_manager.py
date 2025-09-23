@@ -50,17 +50,21 @@ class UIManager:
         Simulates a click on the element specified in element_data.
         """
         try:
-            element = self.window.child_window(
+            spec = self.window.child_window(
                 control_type=element_data["control_type"],
                 title=element_data["title"]
             )
 
-            element.wait('exists', timeout=5)
+            element = spec.wait('exists', timeout=2)
+
 
             if element_data["control_type"] == "Edit":
+                print("Yes, it's an Edit control")
                 element.set_focus()
                 element.type_keys("^a{BACKSPACE}")
-                element.type_keys(element_data["value"], with_spaces=True)
+                print("Doing...")
+                element.type_keys(str(element_data["value"]), with_spaces=True, set_foreground=True)
+                print("Done!")
 
                 self.util.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
                 self.util.speak(f"Verified -- the {element_data['title']} element is present, typing {element_data['value']} into it now.")
