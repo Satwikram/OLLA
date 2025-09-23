@@ -31,6 +31,19 @@ class UIManager:
 
         return ui_tree
     
+    def get_control_properties(self, element):
+        """
+        Retrieves properties of a given control element.
+        """
+        try:
+            control = self.window.child_window(title=element["title"], control_type=element["control_type"])
+            control.wait('exists', timeout=5)
+            properties = control.get_properties()
+            return properties
+        except Exception as e:
+            print("Error retrieving properties:", e)
+            return None
+    
     def simulate(self, element_data):
 
         """
@@ -43,6 +56,15 @@ class UIManager:
             )
 
             element.wait('exists', timeout=5)
+
+            if element_data["control_type"] == "Edit":
+                element.set_focus()
+                element.type_keys("^a{BACKSPACE}")
+                element.type_keys(element_data["value"], with_spaces=True)
+
+                self.util.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
+                self.util.speak(f"Verified -- the {element_data['title']} element is present, typing {element_data['value']} into it now.")
+                return 1
 
             self.util.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
             self.util.speak(f"Verified -- the {element_data['title']} element is present, clicking on it now.")
@@ -59,7 +81,7 @@ class UIManager:
 # obj = UIManager()
 # element_data = {
 
-#     "title": "Review",
-#     "control_type": "Button",
+#     "title": "Aptos (Body)",
+#     "control_type": "Edit",
 # }
 # obj.simulate(element_data)
