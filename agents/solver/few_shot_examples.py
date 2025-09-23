@@ -1,8 +1,8 @@
-from ui_tree import *
-from output import *
+from .ui_tree import *
+from .output import *
 
 
-few_shot_examples = f"""
+examples = f"""
 
 Task 1: Change the margin to narrow.
 
