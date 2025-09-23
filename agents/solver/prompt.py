@@ -1,5 +1,6 @@
-solver_prompt = """
+from agents.solver.few_shot_examples import few_shot_examples
 
+solver_prompt = """
 You are a UI task automation agent.
 
 Your goal is to analyze the current UI tree and select the UI element to interact with, in order to progress toward completing the user's task.
@@ -37,6 +38,7 @@ Return a single JSON object with these fields:
   "found": "Element found in the tree or not",
   "control_type": "Element's control type",
   "title": "Element's visible title",
+  "value": "Value to type into the element, only if control_type is 'Edit', otherwise null",
   "rect": {{
     "left": L,
     "top": T,
@@ -65,9 +67,10 @@ Strict instructions:
 Example output:
 
 {{
-  ""found": "Yes",
+  "found": "Yes",
   "control_type": "Button",
   "title": "Minimize",
+  "value": null,
   "rect": {{
     "left": 3696,
     "top": 0,
@@ -84,6 +87,7 @@ If no relevant element is found in the UI tree:
   "found": "No",
   "control_type": null,
   "title": null,
+  "value": null,
   "rect": null,
   "reason": "No matching element found in the current UI tree that would lead to commplete the user's task",
   "complete": "No"
@@ -95,6 +99,5 @@ Now analyze the following UI tree and provide the correct JSON response.
 
 UI Tree:
 {ui_tree}
-
 
 """
