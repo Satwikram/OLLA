@@ -1,0 +1,690 @@
+Control Identifiers:
+
+Dialog - 'Document1 - Word'    (L1912, T-8, R3848, B1040)
+['Document1 - WordDialog', 'Dialog', 'Document1 - Word']
+child_window(title="Document1 - Word", control_type="Window")
+   | 
+   | Pane - 'DropShadowTop'    (L1920, T178, R3840, B184)
+   | ['Pane', 'DropShadowTop', 'DropShadowTopPane', 'Pane0', 'Pane1']
+   | child_window(title="DropShadowTop", control_type="Pane")
+   | 
+   | Pane - 'MsoDockTop'    (L1920, T0, R3840, B178)
+   | ['Pane2', 'MsoDockTopPane', 'MsoDockTop']
+   | child_window(title="MsoDockTop", control_type="Pane")
+   |    | 
+   |    | Toolbar - ''    (L1920, T0, R3840, B178)
+   |    | ['Toolbar', 'Toolbar0', 'Toolbar1']
+   |    |    | 
+   |    |    | Pane - 'Ribbon'    (L1920, T0, R3840, B178)
+   |    |    | ['Pane3', 'Ribbon', 'RibbonPane', 'Ribbon0', 'Ribbon1', 'RibbonPane0', 'RibbonPane1']
+   |    |    | child_window(title="Ribbon", control_type="Pane")
+   |    |    |    | 
+   |    |    |    | Pane - ''    (L1920, T0, R3840, B178)
+   |    |    |    | ['Pane4']
+   |    |    |    |    | 
+   |    |    |    |    | Pane - ''    (L1920, T0, R3840, B178)
+   |    |    |    |    | ['Pane5']
+   |    |    |    |    |    | 
+   |    |    |    |    |    | Pane - 'Ribbon'    (L1920, T0, R3840, B178)
+   |    |    |    |    |    | ['Pane6', 'Ribbon2', 'RibbonPane2']
+   |    |    |    |    |    | child_window(title="Ribbon", control_type="Pane")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Toolbar - 'Quick Access Toolbar'    (L1962, T0, R2204, B48)
+   |    |    |    |    |    |    | ['Toolbar2', 'Quick Access ToolbarToolbar', 'Quick Access Toolbar']
+   |    |    |    |    |    |    | child_window(title="Quick Access Toolbar", control_type="ToolBar")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Button - 'AutoSave'    (L1962, T9, R2078, B38)
+   |    |    |    |    |    |    |    | ['AutoSave', 'Button', 'AutoSaveButton', 'Button0', 'Button1']
+   |    |    |    |    |    |    |    | child_window(title="AutoSave", auto_id="AutoSaveSwitch", control_type="Button")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Button - 'Save'    (L2079, T9, R2107, B38)
+   |    |    |    |    |    |    |    | ['Save', 'SaveButton', 'Button2']
+   |    |    |    |    |    |    |    | child_window(title="Save", auto_id="FileSave", control_type="Button")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | SplitButton - 'Undo Page Setup'    (L2108, T9, R2146, B38)
+   |    |    |    |    |    |    |    | ['SplitButton', 'Undo Page Setup', 'Undo Page SetupSplitButton', 'Undo Page Setup0', 'Undo Page Setup1', 'SplitButton0', 'SplitButton1']
+   |    |    |    |    |    |    |    | child_window(title="Undo Page Setup", auto_id="Undo", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | Button - 'Undo Page Setup'    (L2108, T9, R2133, B38)
+   |    |    |    |    |    |    |    |    | ['Button3', 'Undo Page SetupButton', 'Undo Page Setup2']
+   |    |    |    |    |    |    |    |    | child_window(title="Undo Page Setup", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L2133, T9, R2146, B38)
+   |    |    |    |    |    |    |    |    | ['More OptionsMenuItem', 'MenuItem', 'More Options', 'MenuItem0', 'MenuItem1', 'More OptionsMenuItem0', 'More OptionsMenuItem1', 'More Options0', 'More Options1']
+   |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="Undo_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Button - 'Redo Click and Type Formatting'    (L2147, T9, R2175, B38)
+   |    |    |    |    |    |    |    | ['Redo Click and Type FormattingButton', 'Redo Click and Type Formatting', 'Button4']
+   |    |    |    |    |    |    |    | child_window(title="Redo Click and Type Formatting", auto_id="RedoOrRepeat", control_type="Button")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | MenuItem - 'Customize Quick Access Toolbar'    (L2176, T8, R2204, B39)
+   |    |    |    |    |    |    |    | ['Customize Quick Access ToolbarMenuItem', 'Customize Quick Access Toolbar', 'MenuItem2']
+   |    |    |    |    |    |    |    | child_window(title="Customize Quick Access Toolbar", control_type="MenuItem")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | TitleBar - '‪Document1‬  -  Word'    (L2205, T0, R2704, B48)
+   |    |    |    |    |    |    | ['\u202aDocument1\u202c  -  Word', '\u202aDocument1\u202c  -  WordTitleBar', 'TitleBar', '\u202aDocument1\u202c  -  Word0', '\u202aDocument1\u202c  -  Word1', 'TitleBar0', 'TitleBar1']
+   |    |    |    |    |    |    | child_window(title="‪Document1‬  -  Word", control_type="TitleBar")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Button - '‪Document1‬  -  Word'    (L2205, T0, R2339, B48)
+   |    |    |    |    |    |    |    | ['\u202aDocument1\u202c  -  Word2', '\u202aDocument1\u202c  -  WordButton', 'Button5']
+   |    |    |    |    |    |    |    | child_window(title="‪Document1‬  -  Word", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | MenuItem - 'Type to search and use the up and down arrow keys to navigate'    (L2704, T8, R3072, B40)
+   |    |    |    |    |    |    | ['Type to search and use the up and down arrow keys to navigateMenuItem', 'MenuItem3', 'Type to search and use the up and down arrow keys to navigate']
+   |    |    |    |    |    |    | child_window(title="Type to search and use the up and down arrow keys to navigate", auto_id="TellMeControlAnchor", control_type="MenuItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Edit - ''    (L2745, T15, R3059, B35)
+   |    |    |    |    |    |    |    | ['Edit', 'Edit0', 'Edit1']
+   |    |    |    |    |    |    |    | child_window(auto_id="TellMeTextBoxAutomationId", control_type="Edit")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Sign in'    (L3628, T14, R3696, B33)
+   |    |    |    |    |    |    | ['Sign inButton', 'Button6', 'Sign in']
+   |    |    |    |    |    |    | child_window(title="Sign in", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Minimize'    (L3696, T0, R3744, B48)
+   |    |    |    |    |    |    | ['Minimize', 'Button7', 'MinimizeButton', 'Minimize0', 'Minimize1', 'MinimizeButton0', 'MinimizeButton1']
+   |    |    |    |    |    |    | child_window(title="Minimize", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Restore Down'    (L3744, T0, R3792, B48)
+   |    |    |    |    |    |    | ['Restore DownButton', 'Restore Down', 'Button8']
+   |    |    |    |    |    |    | child_window(title="Restore Down", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Close'    (L3792, T0, R3840, B48)
+   |    |    |    |    |    |    | ['CloseButton', 'Close', 'Button9', 'CloseButton0', 'CloseButton1', 'Close0', 'Close1']
+   |    |    |    |    |    |    | child_window(title="Close", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'File Tab'    (L1924, T48, R1978, B78)
+   |    |    |    |    |    |    | ['File Tab', 'File TabButton', 'Button10']
+   |    |    |    |    |    |    | child_window(title="File Tab", auto_id="FileTabButton", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | TabControl - 'Ribbon Tabs'    (L1978, T48, R3828, B78)
+   |    |    |    |    |    |    | ['Ribbon Tabs', 'TabControl', 'Ribbon TabsTabControl']
+   |    |    |    |    |    |    | child_window(title="Ribbon Tabs", control_type="Tab")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'Home'    (L1978, T48, R2033, B78)
+   |    |    |    |    |    |    |    | ['TabItem', 'HomeTabItem', 'Home', 'TabItem0', 'TabItem1', 'Home0', 'Home1']
+   |    |    |    |    |    |    |    | child_window(title="Home", auto_id="TabHome", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'Insert'    (L2034, T48, R2087, B78)
+   |    |    |    |    |    |    |    | ['TabItem2', 'InsertTabItem', 'Insert']
+   |    |    |    |    |    |    |    | child_window(title="Insert", auto_id="TabInsert", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'Design'    (L2088, T48, R2147, B78)
+   |    |    |    |    |    |    |    | ['DesignTabItem', 'TabItem3', 'Design']
+   |    |    |    |    |    |    |    | child_window(title="Design", auto_id="TabWordDesign", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'Layout'    (L2148, T48, R2207, B78)
+   |    |    |    |    |    |    |    | ['TabItem4', 'Layout', 'LayoutTabItem']
+   |    |    |    |    |    |    |    | child_window(title="Layout", auto_id="TabPageLayoutWord", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'References'    (L2208, T48, R2291, B78)
+   |    |    |    |    |    |    |    | ['ReferencesTabItem', 'TabItem5', 'References']
+   |    |    |    |    |    |    |    | child_window(title="References", auto_id="TabReferences", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'Mailings'    (L2292, T48, R2360, B78)
+   |    |    |    |    |    |    |    | ['MailingsTabItem', 'TabItem6', 'Mailings']
+   |    |    |    |    |    |    |    | child_window(title="Mailings", auto_id="TabMailings", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'Review'    (L2361, T48, R2421, B78)
+   |    |    |    |    |    |    |    | ['Review', 'TabItem7', 'ReviewTabItem']
+   |    |    |    |    |    |    |    | child_window(title="Review", auto_id="TabReviewWord", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'View'    (L2422, T48, R2468, B78)
+   |    |    |    |    |    |    |    | ['TabItem8', 'ViewTabItem', 'View']
+   |    |    |    |    |    |    |    | child_window(title="View", auto_id="TabView", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | TabItem - 'Help'    (L2469, T48, R2515, B78)
+   |    |    |    |    |    |    |    | ['Help', 'TabItem9', 'HelpTabItem']
+   |    |    |    |    |    |    |    | child_window(title="Help", auto_id="HelpTab", control_type="TabItem")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Button - 'Comments'    (L3569, T51, R3659, B75)
+   |    |    |    |    |    |    |    | ['Comments', 'CommentsButton', 'Button11']
+   |    |    |    |    |    |    |    | child_window(title="Comments", control_type="Button")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | ComboBox - 'Editing'    (L3667, T51, R3749, B75)
+   |    |    |    |    |    |    |    | ['ComboBox', 'EditingComboBox', 'Editing', 'ComboBox0', 'ComboBox1', 'Editing0', 'Editing1']
+   |    |    |    |    |    |    |    | child_window(title="Editing", control_type="ComboBox")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | MenuItem - 'Share'    (L3757, T48, R3828, B78)
+   |    |    |    |    |    |    |    | ['ShareMenuItem', 'Share', 'MenuItem4']
+   |    |    |    |    |    |    |    | child_window(title="Share", control_type="MenuItem")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Pane - 'Lower Ribbon'    (L1928, T78, R3804, B178)
+   |    |    |    |    |    |    | ['Pane7', 'Lower Ribbon', 'Lower RibbonPane']
+   |    |    |    |    |    |    | child_window(title="Lower Ribbon", control_type="Pane")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | GroupBox - 'Home'    (L1932, T78, R3804, B178)
+   |    |    |    |    |    |    |    | ['GroupBox', 'Home2', 'HomeGroupBox', 'GroupBox0', 'GroupBox1']
+   |    |    |    |    |    |    |    | child_window(title="Home", control_type="Group")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Clipboard'    (L1932, T80, R2103, B176)
+   |    |    |    |    |    |    |    |    | ['GroupBox2', 'Clipboard', 'ClipboardGroupBox']
+   |    |    |    |    |    |    |    |    | child_window(title="Clipboard", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Paste'    (L1940, T82, R1982, B158)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton2', 'PasteSplitButton', 'Paste', 'Paste0', 'Paste1']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Paste", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Paste'    (L1940, T82, R1982, B120)
+   |    |    |    |    |    |    |    |    |    |    | ['Paste2', 'Button12', 'PasteButton']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Paste", auto_id="Paste", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L1940, T120, R1982, B158)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem2', 'MenuItem5', 'More Options2']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="PasteMenu_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Cut'    (L1984, T82, R2036, B106)
+   |    |    |    |    |    |    |    |    |    | ['Cut', 'CutButton', 'Button13']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Cut", auto_id="Cut", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Copy'    (L1984, T108, R2045, B132)
+   |    |    |    |    |    |    |    |    |    | ['CopyButton', 'Copy', 'Button14']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Copy", auto_id="Copy", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Format Painter'    (L1984, T134, R2095, B158)
+   |    |    |    |    |    |    |    |    |    | ['Format Painter', 'Format PainterButton', 'Button15']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Format Painter", auto_id="FormatPainter", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Office Clipboard...'    (L2087, T160, R2103, B176)
+   |    |    |    |    |    |    |    |    |    | ['Office Clipboard...', 'Button16', 'Office Clipboard...Button']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Office Clipboard...", auto_id="ShowClipboard", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Font'    (L2103, T80, R2415, B176)
+   |    |    |    |    |    |    |    |    | ['GroupBox3', 'FontGroupBox', 'Font', 'Font0', 'Font1']
+   |    |    |    |    |    |    |    |    | child_window(title="Font", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | ComboBox - 'Font'    (L2111, T90, R2236, B114)
+   |    |    |    |    |    |    |    |    |    | ['ComboBox2', 'FontComboBox', 'Font2']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Font", auto_id="Font", control_type="ComboBox")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Edit - 'Aptos (Body)'    (L2112, T92, R2222, B111)
+   |    |    |    |    |    |    |    |    |    |    | ['Edit2']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Aptos (Body)", control_type="Edit")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Open'    (L2222, T91, R2235, B113)
+   |    |    |    |    |    |    |    |    |    |    | ['OpenButton', 'Open', 'Button17', 'OpenButton0', 'OpenButton1', 'Open0', 'Open1']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Open", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | ComboBox - 'Font Size'    (L2238, T90, R2281, B114)
+   |    |    |    |    |    |    |    |    |    | ['ComboBox3', 'Font SizeComboBox', 'Font Size']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Font Size", auto_id="FontSize", control_type="ComboBox")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Edit - '12'    (L2239, T92, R2267, B111)
+   |    |    |    |    |    |    |    |    |    |    | ['Edit3']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="12", control_type="Edit")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Open'    (L2267, T91, R2280, B113)
+   |    |    |    |    |    |    |    |    |    |    | ['OpenButton2', 'Open2', 'Button18']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Open", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Grow Font'    (L2283, T90, R2307, B114)
+   |    |    |    |    |    |    |    |    |    | ['Button19', 'Grow Font', 'Grow FontButton']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Grow Font", auto_id="FontSizeIncreaseWord", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Shrink Font'    (L2309, T90, R2333, B114)
+   |    |    |    |    |    |    |    |    |    | ['Shrink FontButton', 'Shrink Font', 'Button20']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Shrink Font", auto_id="FontSizeDecreaseWord", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | MenuItem - 'Change Case'    (L2338, T90, R2378, B114)
+   |    |    |    |    |    |    |    |    |    | ['Change Case', 'MenuItem6', 'Change CaseMenuItem']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Change Case", auto_id="ChangeCaseGallery", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Clear Formatting'    (L2383, T90, R2407, B114)
+   |    |    |    |    |    |    |    |    |    | ['Clear FormattingButton', 'Button21', 'Clear Formatting']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Clear Formatting", auto_id="ClearFormatting", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Bold'    (L2111, T122, R2135, B146)
+   |    |    |    |    |    |    |    |    |    | ['BoldButton', 'Bold', 'Button22']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Bold", auto_id="Bold", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Italic'    (L2137, T122, R2161, B146)
+   |    |    |    |    |    |    |    |    |    | ['Italic', 'ItalicButton', 'Button23']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Italic", auto_id="Italic", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Underline'    (L2163, T122, R2202, B146)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton3', 'Underline', 'UnderlineSplitButton', 'Underline0', 'Underline1']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Underline", auto_id="UnderlineGallery", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Underline'    (L2163, T122, R2187, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['UnderlineButton', 'Underline2', 'Button24']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Underline", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L2187, T122, R2202, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem3', 'MenuItem7', 'More Options3']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="UnderlineGallery_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Strikethrough'    (L2204, T122, R2228, B146)
+   |    |    |    |    |    |    |    |    |    | ['StrikethroughButton', 'Button25', 'Strikethrough']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Strikethrough", auto_id="Strikethrough", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Subscript'    (L2230, T122, R2254, B146)
+   |    |    |    |    |    |    |    |    |    | ['Button26', 'Subscript', 'SubscriptButton']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Subscript", auto_id="Subscript", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Superscript'    (L2256, T122, R2280, B146)
+   |    |    |    |    |    |    |    |    |    | ['Superscript', 'Button27', 'SuperscriptButton']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Superscript", auto_id="Superscript", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | MenuItem - 'Text Effects and Typography'    (L2285, T122, R2325, B146)
+   |    |    |    |    |    |    |    |    |    | ['Text Effects and TypographyMenuItem', 'Text Effects and Typography', 'MenuItem8']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Text Effects and Typography", auto_id="TextEffectsGallery", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Text Highlight Color'    (L2327, T122, R2366, B146)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton4', 'Text Highlight Color', 'Text Highlight ColorSplitButton']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Text Highlight Color", auto_id="TextHighlightColorPicker", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Text Highlight Color Yellow'    (L2327, T122, R2351, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['Text Highlight Color YellowButton', 'Button28', 'Text Highlight Color Yellow']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Text Highlight Color Yellow", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L2351, T122, R2366, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem4', 'MenuItem9', 'More Options4']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="TextHighlightColorPicker_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Font Color'    (L2368, T122, R2407, B146)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton5', 'Font ColorSplitButton', 'Font Color']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Font Color", auto_id="FontColorPicker", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Font Color Red'    (L2368, T122, R2392, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['Font Color RedButton', 'Button29', 'Font Color Red']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Font Color Red", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L2392, T122, R2407, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem5', 'MenuItem10', 'More Options5']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="FontColorPicker_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Font...'    (L2399, T160, R2415, B176)
+   |    |    |    |    |    |    |    |    |    | ['Button30', 'Font...', 'Font...Button']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Font...", auto_id="FontDialog", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Paragraph'    (L2415, T80, R2666, B176)
+   |    |    |    |    |    |    |    |    | ['ParagraphGroupBox', 'Paragraph', 'GroupBox4']
+   |    |    |    |    |    |    |    |    | child_window(title="Paragraph", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Bullets'    (L2423, T90, R2462, B114)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton6', 'Bullets', 'BulletsSplitButton', 'Bullets0', 'Bullets1']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Bullets", auto_id="BulletsGalleryWord", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Bullets'    (L2423, T90, R2447, B114)
+   |    |    |    |    |    |    |    |    |    |    | ['Bullets2', 'BulletsButton', 'Button31']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Bullets", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L2447, T90, R2462, B114)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem6', 'MenuItem11', 'More Options6']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="BulletsGalleryWord_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Numbering'    (L2464, T90, R2503, B114)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton7', 'Numbering', 'NumberingSplitButton', 'Numbering0', 'Numbering1']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Numbering", auto_id="NumberingGalleryWord", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Numbering'    (L2464, T90, R2488, B114)
+   |    |    |    |    |    |    |    |    |    |    | ['NumberingButton', 'Numbering2', 'Button32']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Numbering", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L2488, T90, R2503, B114)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem7', 'MenuItem12', 'More Options7']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="NumberingGalleryWord_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | MenuItem - 'Multilevel List'    (L2505, T90, R2545, B114)
+   |    |    |    |    |    |    |    |    |    | ['Multilevel ListMenuItem', 'MenuItem13', 'Multilevel List']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Multilevel List", auto_id="MultilevelListGallery", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Decrease Indent'    (L2550, T90, R2574, B114)
+   |    |    |    |    |    |    |    |    |    | ['Button33', 'Decrease IndentButton', 'Decrease Indent']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Decrease Indent", auto_id="IndentDecreaseWord", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Increase Indent'    (L2576, T90, R2600, B114)
+   |    |    |    |    |    |    |    |    |    | ['Increase IndentButton', 'Button34', 'Increase Indent']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Increase Indent", auto_id="IndentIncreaseWord", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Sort...'    (L2605, T90, R2629, B114)
+   |    |    |    |    |    |    |    |    |    | ['Sort...Button', 'Sort...', 'Button35']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Sort...", auto_id="SortDialogClassic", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Show All'    (L2634, T90, R2658, B114)
+   |    |    |    |    |    |    |    |    |    | ['Button36', 'Show AllButton', 'Show All']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Show All", auto_id="ParagraphMarks", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Align Left'    (L2423, T122, R2447, B146)
+   |    |    |    |    |    |    |    |    |    | ['Align Left', 'Align LeftButton', 'Button37']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Align Left", auto_id="AlignLeft", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Center'    (L2449, T122, R2473, B146)
+   |    |    |    |    |    |    |    |    |    | ['CenterButton', 'Center', 'Button38']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Center", auto_id="AlignCenter", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Align Right'    (L2475, T122, R2499, B146)
+   |    |    |    |    |    |    |    |    |    | ['Button39', 'Align RightButton', 'Align Right']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Align Right", auto_id="AlignRight", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Justify'    (L2501, T122, R2525, B146)
+   |    |    |    |    |    |    |    |    |    | ['JustifyButton', 'Button40', 'Justify']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Justify", auto_id="AlignJustify", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | MenuItem - 'Line and Paragraph Spacing'    (L2530, T122, R2570, B146)
+   |    |    |    |    |    |    |    |    |    | ['Line and Paragraph Spacing', 'Line and Paragraph SpacingMenuItem', 'MenuItem14']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Line and Paragraph Spacing", auto_id="LineSpacingGallery", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Shading'    (L2575, T122, R2614, B146)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton8', 'ShadingSplitButton', 'Shading']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Shading", auto_id="ShadingColorPicker", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Shading RGB(0, 0, 0)'    (L2575, T122, R2599, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['Shading RGB(0, 0, 0)', 'Shading RGB(0, 0, 0)Button', 'Button41']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Shading RGB(0, 0, 0)", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L2599, T122, R2614, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem8', 'MenuItem15', 'More Options8']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="ShadingColorPicker_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Borders'    (L2616, T122, R2655, B146)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton9', 'BordersSplitButton', 'Borders', 'Borders0', 'Borders1']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Borders", auto_id="BordersSelectionGallery", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Borders'    (L2616, T122, R2640, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['BordersButton', 'Button42', 'Borders2']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Borders", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L2640, T122, R2655, B146)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem9', 'MenuItem16', 'More Options9']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="BordersSelectionGallery_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Paragraph...'    (L2650, T160, R2666, B176)
+   |    |    |    |    |    |    |    |    |    | ['Paragraph...', 'Button43', 'Paragraph...Button']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Paragraph...", auto_id="ParagraphDialog", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Styles'    (L2666, T80, R3361, B176)
+   |    |    |    |    |    |    |    |    | ['GroupBox5', 'StylesGroupBox', 'Styles', 'StylesGroupBox0', 'StylesGroupBox1', 'Styles0', 'Styles1']
+   |    |    |    |    |    |    |    |    | child_window(title="Styles", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | GroupBox - 'Styles'    (L2674, T87, R3353, B150)
+   |    |    |    |    |    |    |    |    |    | ['GroupBox6', 'StylesGroupBox2', 'Styles2']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Styles", control_type="Group")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - ''    (L2674, T90, R3353, B150)
+   |    |    |    |    |    |    |    |    |    |    | ['MenuItem17']
+   |    |    |    |    |    |    |    |    |    |    | child_window(auto_id="QuickStylesGallery", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    | Pane - 'Styles'    (L2676, T92, R3326, B148)
+   |    |    |    |    |    |    |    |    |    |    |    | ['Pane8', 'Styles3', 'StylesPane']
+   |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Styles", control_type="Pane")
+   |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    | ListView - 'Styles'    (L2677, T92, R3325, B260)
+   |    |    |    |    |    |    |    |    |    |    |    |    | ['ListView', 'Styles4', 'StylesListView']
+   |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Styles", control_type="DataGrid")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - '¶ Normal'    (L2677, T92, R2785, B148)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['¶ NormalListItem', 'ListItem', '¶ Normal', 'ListItem0', 'ListItem1']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="¶ Normal", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - '¶ No Spacing'    (L2785, T92, R2893, B148)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['ListItem2', '¶ No Spacing', '¶ No SpacingListItem']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="¶ No Spacing", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Heading 1'    (L2893, T92, R3001, B148)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Heading 1', 'Heading 1ListItem', 'ListItem3']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Heading 1", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Heading 2'    (L3001, T92, R3109, B148)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Heading 2', 'ListItem4', 'Heading 2ListItem']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Heading 2", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Title'    (L3109, T92, R3217, B148)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['TitleListItem', 'ListItem5', 'Title']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Title", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Subtitle'    (L3217, T92, R3325, B148)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Subtitle', 'SubtitleListItem', 'ListItem6']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Subtitle", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Subtle Emphasis'    (L2677, T148, R2785, B204)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Subtle Emphasis', 'Subtle EmphasisListItem', 'ListItem7']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Subtle Emphasis", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Emphasis'    (L2785, T148, R2893, B204)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['EmphasisListItem', 'ListItem8', 'Emphasis']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Emphasis", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Intense Emphasis'    (L2893, T148, R3001, B204)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Intense Emphasis', 'Intense EmphasisListItem', 'ListItem9']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Intense Emphasis", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Strong'    (L3001, T148, R3109, B204)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['StrongListItem', 'Strong', 'ListItem10']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Strong", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Quote'    (L3109, T148, R3217, B204)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Quote', 'QuoteListItem', 'ListItem11']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Quote", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Intense Quote'    (L3217, T148, R3325, B204)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Intense Quote', 'Intense QuoteListItem', 'ListItem12']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Intense Quote", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Subtle Reference'    (L2677, T204, R2785, B260)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Subtle ReferenceListItem', 'ListItem13', 'Subtle Reference']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Subtle Reference", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Intense Reference'    (L2785, T204, R2893, B260)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Intense Reference', 'ListItem14', 'Intense ReferenceListItem']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Intense Reference", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - 'Book Title'    (L2893, T204, R3001, B260)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['Book Title', 'ListItem15', 'Book TitleListItem']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Book Title", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ListItem - '¶ List Paragraph'    (L3001, T204, R3109, B260)
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | ['ListItem16', '¶ List ParagraphListItem', '¶ List Paragraph']
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | child_window(title="¶ List Paragraph", control_type="ListItem")
+   |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    | Button - 'Styles'    (L3326, T90, R3350, B150)
+   |    |    |    |    |    |    |    |    |    |    |    | ['Styles5', 'StylesButton', 'Button44']
+   |    |    |    |    |    |    |    |    |    |    |    | child_window(title="Styles", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    |    |    | Image - ''    (L3334, T116, R3342, B124)
+   |    |    |    |    |    |    |    |    |    |    |    |    | ['Image']
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Styles...'    (L3345, T160, R3361, B176)
+   |    |    |    |    |    |    |    |    |    | ['Styles...', 'Styles...Button', 'Button45']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Styles...", auto_id="StylesPane", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Editing'    (L3361, T80, R3457, B176)
+   |    |    |    |    |    |    |    |    | ['EditingGroupBox', 'GroupBox7', 'Editing2']
+   |    |    |    |    |    |    |    |    | child_window(title="Editing", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Find'    (L3369, T82, R3449, B106)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton10', 'FindSplitButton', 'Find', 'Find0', 'Find1']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Find", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Find'    (L3369, T82, R3425, B106)
+   |    |    |    |    |    |    |    |    |    |    | ['FindButton', 'Button46', 'Find2']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Find", auto_id="NavigationPaneFind", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L3425, T82, R3449, B106)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem10', 'MenuItem18', 'More Options10']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="SelectMenuExcel_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Replace...'    (L3369, T108, R3443, B132)
+   |    |    |    |    |    |    |    |    |    | ['Replace...', 'Button47', 'Replace...Button']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Replace...", auto_id="ReplaceDialog", control_type="Button")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | MenuItem - 'Select'    (L3369, T134, R3444, B158)
+   |    |    |    |    |    |    |    |    |    | ['Select', 'MenuItem19', 'SelectMenuItem']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Select", auto_id="SelectMenu", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Voice'    (L3457, T80, R3515, B176)
+   |    |    |    |    |    |    |    |    | ['GroupBox8', 'Voice', 'VoiceGroupBox']
+   |    |    |    |    |    |    |    |    | child_window(title="Voice", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | SplitButton - 'Dictate'    (L3465, T82, R3507, B158)
+   |    |    |    |    |    |    |    |    |    | ['SplitButton11', 'Dictate', 'DictateSplitButton', 'Dictate0', 'Dictate1']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Dictate", control_type="SplitButton")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | Button - 'Dictate'    (L3465, T82, R3507, B120)
+   |    |    |    |    |    |    |    |    |    |    | ['Dictate2', 'DictateButton', 'Button48']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="Dictate", auto_id="Dictate", control_type="Button")
+   |    |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    |    | MenuItem - 'More Options'    (L3465, T120, R3507, B158)
+   |    |    |    |    |    |    |    |    |    |    | ['More OptionsMenuItem11', 'MenuItem20', 'More Options11']
+   |    |    |    |    |    |    |    |    |    |    | child_window(title="More Options", auto_id="DictationMenu_Dropdown", control_type="MenuItem")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Editor'    (L3515, T80, R3573, B176)
+   |    |    |    |    |    |    |    |    | ['Editor', 'GroupBox9', 'EditorGroupBox', 'Editor0', 'Editor1']
+   |    |    |    |    |    |    |    |    | child_window(title="Editor", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Editor'    (L3523, T82, R3565, B158)
+   |    |    |    |    |    |    |    |    |    | ['Editor2', 'EditorButton', 'Button49', 'EditorButton0', 'EditorButton1']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Editor", auto_id="WritingAssistanceCheckDocument", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Add-ins'    (L3573, T80, R3636, B176)
+   |    |    |    |    |    |    |    |    | ['GroupBox10', 'Add-insGroupBox', 'Add-ins']
+   |    |    |    |    |    |    |    |    | child_window(title="Add-ins", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Add‑ins'    (L3581, T82, R3628, B158)
+   |    |    |    |    |    |    |    |    |    | ['Add‑insButton', 'Add‑ins', 'Button50']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Add‑ins", auto_id="OfficeExtensionsShowAddinFlyout", control_type="Button")
+   |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    | GroupBox - 'Assistance'    (L3636, T80, R3696, B176)
+   |    |    |    |    |    |    |    |    | ['Assistance', 'GroupBox11', 'AssistanceGroupBox']
+   |    |    |    |    |    |    |    |    | child_window(title="Assistance", control_type="Group")
+   |    |    |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    |    |    | Button - 'Editor'    (L3645, T82, R3687, B158)
+   |    |    |    |    |    |    |    |    |    | ['Editor3', 'EditorButton2', 'Button51']
+   |    |    |    |    |    |    |    |    |    | child_window(title="Editor", auto_id="WritingAssistanceCheckDocument", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | MenuItem - 'Ribbon Display Options'    (L3808, T154, R3828, B174)
+   |    |    |    |    |    |    | ['Ribbon Display OptionsMenuItem', 'Ribbon Display Options', 'MenuItem21']
+   |    |    |    |    |    |    | child_window(title="Ribbon Display Options", control_type="MenuItem")
+   | 
+   | Pane - 'MsoDockBottom'    (L1920, T1010, R3840, B1032)
+   | ['Pane9', 'MsoDockBottomPane', 'MsoDockBottom']
+   | child_window(title="MsoDockBottom", control_type="Pane")
+   |    | 
+   |    | Toolbar - ''    (L1920, T1010, R3840, B1032)
+   |    | ['Toolbar3', 'Word Count 0 wordsToolbar']
+   |    |    | 
+   |    |    | Pane - 'Status Bar'    (L1920, T1010, R3840, B1032)
+   |    |    | ['Pane10', 'Status BarPane', 'Status Bar', 'Status Bar0', 'Status Bar1']
+   |    |    | child_window(title="Status Bar", control_type="Pane")
+   |    |    |    | 
+   |    |    |    | Pane - ''    (L1920, T1010, R3840, B1032)
+   |    |    |    | ['Pane11', 'Word Count 0 wordsPane', 'Word Count 0 wordsPane0', 'Word Count 0 wordsPane1']
+   |    |    |    |    | 
+   |    |    |    |    | Pane - ''    (L1920, T1010, R3840, B1032)
+   |    |    |    |    | ['Pane12', 'Word Count 0 wordsPane2']
+   |    |    |    |    |    | 
+   |    |    |    |    |    | StatusBar - 'Status Bar'    (L1920, T1010, R3840, B1032)
+   |    |    |    |    |    | ['Status BarStatusBar', 'StatusBar', 'Status Bar2']
+   |    |    |    |    |    | child_window(title="Status Bar", control_type="StatusBar")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Page Number Page 1 of 1'    (L1924, T1011, R1997, B1032)
+   |    |    |    |    |    |    | ['Page Number Page 1 of 1Button', 'Button52', 'Page Number Page 1 of 1']
+   |    |    |    |    |    |    | child_window(title="Page Number Page 1 of 1", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Static - 'Word Count 0 words'    (L2000, T1011, R2057, B1032)
+   |    |    |    |    |    |    | ['Word Count 0 words', 'Static', 'Word Count 0 wordsStatic']
+   |    |    |    |    |    |    | child_window(title="Word Count 0 words", control_type="Text")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Spelling and Grammar Check No Errors'    (L2060, T1011, R2092, B1032)
+   |    |    |    |    |    |    | ['Button53', 'Spelling and Grammar Check No Errors', 'Spelling and Grammar Check No ErrorsButton']
+   |    |    |    |    |    |    | child_window(title="Spelling and Grammar Check No Errors", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Accessibility Checker Accessibility: Good to go'    (L2095, T1011, R2256, B1032)
+   |    |    |    |    |    |    | ['Accessibility Checker Accessibility: Good to go', 'Accessibility Checker Accessibility: Good to goButton', 'Button54']
+   |    |    |    |    |    |    | child_window(title="Accessibility Checker Accessibility: Good to go", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Display Settings '    (L3357, T1011, R3473, B1032)
+   |    |    |    |    |    |    | ['Display Settings ', 'Display Settings Button', 'Button55']
+   |    |    |    |    |    |    | child_window(title="Display Settings ", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Focus '    (L3473, T1011, R3537, B1032)
+   |    |    |    |    |    |    | ['Focus ', 'Button56', 'Focus Button']
+   |    |    |    |    |    |    | child_window(title="Focus ", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Read Mode'    (L3540, T1011, R3580, B1032)
+   |    |    |    |    |    |    | ['Read ModeButton', 'Button57', 'Read Mode']
+   |    |    |    |    |    |    | child_window(title="Read Mode", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Print Layout'    (L3580, T1011, R3620, B1032)
+   |    |    |    |    |    |    | ['Print Layout', 'Button58', 'Print LayoutButton']
+   |    |    |    |    |    |    | child_window(title="Print Layout", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Web Layout'    (L3620, T1011, R3660, B1032)
+   |    |    |    |    |    |    | ['Web Layout', 'Web LayoutButton', 'Button59']
+   |    |    |    |    |    |    | child_window(title="Web Layout", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Zoom Out (Ctrl -)'    (L3661, T1011, R3679, B1032)
+   |    |    |    |    |    |    | ['Zoom Out (Ctrl -)', 'Button60', 'Zoom Out (Ctrl -)Button']
+   |    |    |    |    |    |    | child_window(title="Zoom Out (Ctrl -)", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Slider - 'Zoom'    (L3679, T1011, R3779, B1032)
+   |    |    |    |    |    |    | ['Slider']
+   |    |    |    |    |    |    | child_window(title="Zoom", control_type="Slider")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Button - 'Zoom Out'    (L3679, T1011, R3727, B1032)
+   |    |    |    |    |    |    |    | ['Zoom Out', 'Button61', 'Zoom OutButton']
+   |    |    |    |    |    |    |    | child_window(title="Zoom Out", control_type="Button")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Thumb - 'Position'    (L3727, T1016, R3732, B1027)
+   |    |    |    |    |    |    |    | ['PositionThumb', 'Thumb', 'Position']
+   |    |    |    |    |    |    |    | child_window(title="Position", control_type="Thumb")
+   |    |    |    |    |    |    |    | 
+   |    |    |    |    |    |    |    | Button - 'Zoom In'    (L3732, T1011, R3779, B1032)
+   |    |    |    |    |    |    |    | ['Zoom In', 'Button62', 'Zoom InButton']
+   |    |    |    |    |    |    |    | child_window(title="Zoom In", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Zoom In (Ctrl +)'    (L3779, T1011, R3797, B1032)
+   |    |    |    |    |    |    | ['Zoom In (Ctrl +)Button', 'Zoom In (Ctrl +)', 'Button63']
+   |    |    |    |    |    |    | child_window(title="Zoom In (Ctrl +)", control_type="Button")
+   |    |    |    |    |    |    | 
+   |    |    |    |    |    |    | Button - 'Zoom 100%'    (L3797, T1011, R3840, B1032)
+   |    |    |    |    |    |    | ['Button64', 'Zoom 100%', 'Zoom 100%Button']
+   |    |    |    |    |    |    | child_window(title="Zoom 100%", control_type="Button")
+   | 
+   | Pane - 'Document1'    (L1920, T178, R3840, B1010)
+   | ['Pane13', 'Document1Pane', 'Document1']
+   | child_window(title="Document1", control_type="Pane")
+   |    | 
+   |    | Document - ''    (L1920, T178, R3823, B1010)
+   |    | ['Document']
+   |    |    | 
+   |    |    | Custom - 'Page 1'    (L2463, T195, R3279, B1010)
+   |    |    | ['Custom', 'Page 1Custom', 'Page 1']
+   |    |    | child_window(title="Page 1", auto_id="UIA_AutomationId_Word_Page_1", control_type="Custom")
+   |    |    |    | 
+   |    |    |    | Edit - 'Page 1 content'    (L2463, T243, R3279, B1010)
+   |    |    |    | ['Edit4']
+   |    |    |    | child_window(title="Page 1 content", auto_id="Body", control_type="Edit")
+   |    | 
+   |    | Pane - 'Vertical'    (L3823, T178, R3840, B1010)
+   |    | ['Pane14', 'VerticalPane', 'Vertical']
+   |    | child_window(title="Vertical", control_type="Pane")
+   |    |    | 
+   |    |    | Pane - ''    (L3823, T178, R3840, B1010)
+   |    |    | ['Pane15']
+   |    |    |    | 
+   |    |    |    | ScrollBar - ''    (L3823, T178, R3840, B1010)
+   |    |    |    | ['ScrollBar']
+   | 
+   | TitleBar - ''    (L1920, T-5, R3840, B0)
+   | ['TitleBar2']
+   |    | 
+   |    | Menu - 'System'    (L1920, T0, R1942, B22)
+   |    | ['System', 'SystemMenu', 'Menu', 'System0', 'System1']
+   |    | child_window(title="System", auto_id="MenuBar", control_type="MenuBar")
+   |    |    | 
+   |    |    | MenuItem - 'System'    (L1920, T0, R1942, B22)
+   |    |    | ['System2', 'SystemMenuItem', 'MenuItem22']
+   |    |    | child_window(title="System", control_type="MenuItem")
+   |    | 
+   |    | Button - 'Minimize'    (L0, T0, R0, B0)
+   |    | ['Minimize2', 'Button65', 'MinimizeButton2']
+   |    | child_window(title="Minimize", control_type="Button")
+   |    | 
+   |    | Button - 'Restore'    (L0, T0, R0, B0)
+   |    | ['Restore', 'Button66', 'RestoreButton']
+   |    | child_window(title="Restore", control_type="Button")
+   |    | 
+   |    | Button - 'Close'    (L0, T0, R0, B0)
+   |    | ['CloseButton2', 'Close2', 'Button67']
+   |    | child_window(title="Close", control_type="Button")
