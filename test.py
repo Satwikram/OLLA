@@ -3,11 +3,13 @@ from ui_automation.ui_manager import *
 
 obj = UIManager()
 
-element = {
+# element = {
     
-    "title": "Aptos (Body)",
-    "control_type": "Edit",
-}
+#     "title": "Aptos (Body)",
+#     "control_type": "Edit",
+# }
 
-property = obj.get_control_properties(element)
-print(property)
+print(obj.get_ui_tree())
+
+# property = obj.get_control_properties(element)
+# print(property)
