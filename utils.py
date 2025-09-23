@@ -35,10 +35,7 @@ class Utils:
             self.audio_data = self.recognizer.listen(source, timeout=None, phrase_time_limit=None)
 
     def toggle_listen(self):
-        """
-        First call → start listening in a thread.
-        Second call → stop listening and return recognized text.
-        """
+
         if not self.listening:
             # Start listening
             self.listening = True
