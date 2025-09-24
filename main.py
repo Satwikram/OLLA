@@ -38,10 +38,11 @@ def predict_action(query):
         print("Did not find any relevant control element")
 
 # query = "Task: Change Margins to Narrow"
-query = "Task: Change the font size to 10"
+# query = "Task: Change the font size to 10"
 # query = "Task: Add a new comment with text 'Check this section'"
 # query = "Task: Center the alignment for the text"
 # query = "Task: Change the mode to Reviewing"
+query = "Task: Insert a table with 8 rows and 5 columns"
 
 predict_action(query)
 print(steps)
