@@ -10,6 +10,7 @@ class Utils:
     def __init__(self):
         # Function to speak text
         self.engine = pyttsx3.init()
+        self.lock = threading.RLock()
 
         # Speech recognition
         self.recognizer = sr.Recognizer()
@@ -22,10 +23,19 @@ class Utils:
         # keyboard.add_hotkey("ctrl+shift+Z", self._shortcut_action)
         # self.speak("Hi, I am OLLA! Press Ctrl+Shift+Z to start listening.")
     
-    def speak(self, text):
-        self.engine.stop()
-        self.engine.say(text)
-        self.engine.runAndWait()
+    def speak(self, text: str, *, flush=True):
+
+        if not text:
+            return
+        with self.lock:
+            try:
+                if flush:
+                    self.engine.stop()
+                self.engine.say(text)
+                self.engine.runAndWait()  
+            except Exception as e:
+                print("TTS error:", e)
+
 
     # def _listen_background(self):
     #     """Internal method: records audio until stopped."""
