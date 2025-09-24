@@ -46,6 +46,7 @@ Return a single JSON object with these fields:
   "found": "Element found in the tree or not",
   "control_type": "Element's control type",
   "title": "Element's visible title",
+  "value": "Element's value if applicable, otherwise null",
   "rect": {{{{
     "left": L,
     "top": T,
@@ -70,6 +71,9 @@ Strict instructions:
 - Your response must exactly match the JSON structure above.
 - Return correct control_type.
 - Be decisive about completion: if the element directly performs the user's request, mark complete as "Yes"
+- You must always return a JSON object with all fields filled, even if no relevant element is found.
+- Always analyze the previous outputs to understand the context and what has already been done -- Never ignore previous outputs.
+- Don't repeat the same action as in previous outputs unless absolutely necessary.
 
 ---
 
@@ -79,6 +83,7 @@ Example output:
   "found": "Yes",
   "control_type": "Button",
   "title": "Minimize",
+  "value": null,
   "rect": {{{{
     "left": 3696,
     "top": 0,
@@ -95,6 +100,7 @@ If no relevant element is found in the UI tree:
   "found": "No",
   "control_type": null,
   "title": null,
+  "value": null,
   "rect": null,
   "reason": "No matching element found in the current UI tree that would lead to complete the user's task",
   "complete": "No"
