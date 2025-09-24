@@ -67,11 +67,11 @@ class UIManager:
                 print("Done!")
 
                 self.util.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
-                self.util.speak(f"Verified -- the {element_data['title']} element is present, typing {element_data['value']} into it now.")
+                # self.util.speak(f"Verified -- the {element_data['title']} element is present, typing {element_data['value']} into it now.")
                 return 1
 
             self.util.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
-            self.util.speak(f"Verified -- the {element_data['title']} element is present, clicking on it now.")
+            # self.util.speak(f"Verified -- the {element_data['title']} element is present, clicking on it now.")
 
             element.click_input()
             print(f"Clicked on element using control_type='{element_data['control_type']}' and title='{element_data['title']}'.")
