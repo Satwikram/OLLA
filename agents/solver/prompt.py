@@ -74,6 +74,8 @@ Strict instructions:
 - You must always return a JSON object with all fields filled, even if no relevant element is found.
 - Always analyze the previous outputs to understand the context and what has already been done -- Never ignore previous outputs.
 - Don't repeat the same action as in previous outputs unless absolutely necessary.
+- The value field should be null if the element does not have a value property. For example, Buttons do not have a value property, so return null for value in that case.
+- The value field should contain the actual value of the element if it has one. For example, for an Edit control, return value that needs to be updated based on the user's query.
 
 ---
 
@@ -83,7 +85,7 @@ Example output:
   "found": "Yes",
   "control_type": "Edit",
   "title": "Font",
-  "value": Aptos (Body),
+  "value": "Aptos (Body)",
   "rect": {{{{
     "left": 3696,
     "top": 0,
