@@ -81,16 +81,17 @@ Example output:
 
 {{{{
   "found": "Yes",
-  "control_type": "Button",
-  "title": "Minimize",
-  "value": null,
+  "control_type": "Edit",
+  "title": "Font",
+  "value": Aptos (Body),
   "rect": {{{{
     "left": 3696,
     "top": 0,
     "right": 3744,
     "bottom": 48
   }}}},
-  "reason": "I can see 'Minimize' button in the provided UI tree, and also, element's title exactly matches 'Minimize'; it is a Button control, which matches the expected action for minimizing the window. Coordinates included since no auto_id is available.",
+  "reason": "I can see 'Font' element in the provided UI tree, and also, element's title exactly matches 'Font'; it is a control, which matches the expected action for changing the font to Aptos (Body). 
+  Aptos (Body) is the value of this element, which matches the user's request. Coordinates included since no auto_id is available.",
   "complete": "Yes"
 }}}}
 
