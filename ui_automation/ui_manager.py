@@ -4,6 +4,9 @@ from io import StringIO
 from contextlib import redirect_stdout
 import pyttsx3
 from utils import *
+from pywinauto.uia_defines import IUIA  
+from pywinauto.controls.uiawrapper import UIAWrapper
+
 
 class UIManager:
 
