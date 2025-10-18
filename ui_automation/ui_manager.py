@@ -6,11 +6,16 @@ import pyttsx3
 from utils import *
 from pywinauto.uia_defines import IUIA  
 from pywinauto.controls.uiawrapper import UIAWrapper
+from pywinauto.win32functions import SetProcessDPIAware
+from PIL import ImageGrab
+
 
 
 class UIManager:
 
     def __init__(self):
+
+        SetProcessDPIAware()  # avoid blurry crops on high-DPI
 
         self.util = Utils()
 
@@ -33,6 +38,15 @@ class UIManager:
         ui_tree = output.getvalue()
 
         return ui_tree
+    
+    def get_screenshot(self, filename="screenshot.png"):
+
+        """
+        Takes a screenshot of the currently active window and saves it to the specified filename.
+        """
+        img = self.window.capture_as_image()  
+        img.save(filename)
+        return filename
     
     def get_control_properties(self, element):
         """
@@ -86,9 +100,11 @@ class UIManager:
             return 0
 
 # obj = UIManager()
-# element_data = {
+# # element_data = {
 
-#     "title": "Aptos (Body)",
-#     "control_type": "Edit",
-# }
-# obj.simulate(element_data)
+# #     "title": "Aptos (Body)",
+# #     "control_type": "Edit",
+# # }
+# # obj.simulate(element_data)
+
+# obj.get_screenshot()
