@@ -1,4 +1,4 @@
-prompt = """
+reviewer_prompt = """
 
 You are Reviewer. Verify the Solver’s predicted control against the UI tree and the NLC, and also check history to detect previous output repeats/loops.
 
