@@ -4,6 +4,8 @@ import json
 
 from utils import *
 
+# --- Global objects ---
+
 obj1 = MultiAgent()
 obj2 = UIManager()
 obj3 = Utils()
@@ -37,12 +39,24 @@ def predict_action(query):
     else:
         print("Did not find any relevant control element")
 
-# query = "Task: Change Margins to Narrow"
-# query = "Task: Change the font size to 10"
-# query = "Task: Add a new comment with text 'Check this section'"
-# query = "Task: Center the alignment for the text"
-# query = "Task: Change the mode to Reviewing"
-query = "Task: Insert a table with 8 rows and 5 columns"
 
-predict_action(query)
-print(steps)
+def main():
+
+    import multiprocessing
+    multiprocessing.freeze_support()  
+
+    import pythoncom, pywintypes
+    _ = (pythoncom, pywintypes)  # ensure pywin32 is loaded properly
+
+    # query = "Task: Change Margins to Narrow"
+    # query = "Task: Change the font size to 10"
+    # query = "Task: Add a new comment with text 'Check this section'"
+    # query = "Task: Center the alignment for the text"
+    # query = "Task: Change the mode to Reviewing"
+    query = "Task: Insert a table with 8 rows and 6 columns"
+
+    predict_action(query)
+    print(steps)
+
+if __name__ == "__main__":
+    main()
