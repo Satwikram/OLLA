@@ -24,6 +24,7 @@ dependencies = [
     "pyaudio (>=0.2.14,<0.3.0)",
     "pillow (>=12.0.0,<13.0.0)",
     "pynput (>=1.8.1,<2.0.0)",
+    "faster-whisper (>=1.2.0,<2.0.0)",
 ]
 [project.scripts]
 uia-bot = "main:main"
