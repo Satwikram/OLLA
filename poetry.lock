@@ -281,6 +281,18 @@ files = [
 ]
 
 [[package]]
+name = "evdev"
+version = "1.9.2"
+description = "Bindings to the Linux input handling subsystem"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+markers = "\"linux\" in sys_platform"
+files = [
+    {file = "evdev-1.9.2.tar.gz", hash = "sha256:5d3278892ce1f92a74d6bf888cc8525d9f68af85dbe336c95d1c87fb8f423069"},
+]
+
+[[package]]
 name = "greenlet"
 version = "3.2.4"
 description = "Lightweight in-process concurrent programming"
@@ -1275,19 +1287,23 @@ files = [
 pyrect = "*"
 
 [[package]]
-name = "pyinput"
-version = "0.3.2"
-description = "Python library to send inputs to an executable."
+name = "pynput"
+version = "1.8.1"
+description = "Monitor and control user input devices"
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "pyinput-0.3.2-py2.py3-none-any.whl", hash = "sha256:6577bf62b1bd8db9b2609d280cc0d3c958eefefad3d194af92dc33626ebe1d6d"},
-    {file = "pyinput-0.3.2.tar.gz", hash = "sha256:297b156e96788601a244e537523cc523cd39fec9104e91b9dc827c149a84793c"},
+    {file = "pynput-1.8.1-py2.py3-none-any.whl", hash = "sha256:42dfcf27404459ca16ca889c8fb8ffe42a9fe54f722fd1a3e130728e59e768d2"},
+    {file = "pynput-1.8.1.tar.gz", hash = "sha256:70d7c8373ee98911004a7c938742242840a5628c004573d84ba849d4601df81e"},
 ]
 
 [package.dependencies]
-pywin32 = "*"
+evdev = {version = ">=1.3", markers = "\"linux\" in sys_platform"}
+pyobjc-framework-ApplicationServices = {version = ">=8.0", markers = "sys_platform == \"darwin\""}
+pyobjc-framework-Quartz = {version = ">=8.0", markers = "sys_platform == \"darwin\""}
+python-xlib = {version = ">=0.17", markers = "\"linux\" in sys_platform"}
+six = "*"
 
 [[package]]
 name = "pyobjc"
@@ -4929,7 +4945,7 @@ description = "Python X Library"
 optional = false
 python-versions = "*"
 groups = ["main"]
-markers = "platform_system == \"Linux\""
+markers = "platform_system == \"Linux\" or \"linux\" in sys_platform"
 files = [
     {file = "python-xlib-0.33.tar.gz", hash = "sha256:55af7906a2c75ce6cb280a584776080602444f75815a7aff4d287bb2d7018b32"},
     {file = "python_xlib-0.33-py2.py3-none-any.whl", hash = "sha256:c3534038d42e0df2f1392a1b30a15a4ff5fdc2b86cfa94f072bf11b10a164398"},
@@ -5845,4 +5861,4 @@ cffi = ["cffi (>=1.17,<2.0) ; platform_python_implementation != \"PyPy\" and pyt
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "1942a25435b38826bf1327b35b8cc9fd6cb0e46a8e720873fc48a86db60fd9f5"
+content-hash = "8bd4c2210a9c32859cad522b4a834e14609b86ee0d804d7e64fe5409e9af472b"
