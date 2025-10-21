@@ -1275,6 +1275,21 @@ files = [
 pyrect = "*"
 
 [[package]]
+name = "pyinput"
+version = "0.3.2"
+description = "Python library to send inputs to an executable."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "pyinput-0.3.2-py2.py3-none-any.whl", hash = "sha256:6577bf62b1bd8db9b2609d280cc0d3c958eefefad3d194af92dc33626ebe1d6d"},
+    {file = "pyinput-0.3.2.tar.gz", hash = "sha256:297b156e96788601a244e537523cc523cd39fec9104e91b9dc827c149a84793c"},
+]
+
+[package.dependencies]
+pywin32 = "*"
+
+[[package]]
 name = "pyobjc"
 version = "11.1"
 description = "Python<->ObjC Interoperability Module"
@@ -5830,4 +5845,4 @@ cffi = ["cffi (>=1.17,<2.0) ; platform_python_implementation != \"PyPy\" and pyt
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "011d8066a5bcbf591dad6ef1722408c62df13d9db1736f5549a1a076c47162aa"
+content-hash = "1942a25435b38826bf1327b35b8cc9fd6cb0e46a8e720873fc48a86db60fd9f5"
