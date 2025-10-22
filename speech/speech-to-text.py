@@ -5,7 +5,7 @@ import soundfile as sf
 import tempfile
 from faster_whisper import WhisperModel  # only needed where you create the model
 from pynput import keyboard
-
+from utils import Utils
 
 
 class STT:
@@ -21,15 +21,28 @@ class STT:
         self._buf = []
         self._stream = None
 
+        # start keyboard hook in background
+        self.listener = keyboard.Listener(on_press=self.on_press)
+        self.listener.daemon = True
+        self.listener.start()  # runs in background
+
+        self.speaker = Utils()
+        self.speaker.speak("Hi there--this is OLLA. ")
+
     def _cb(self, indata, _frames, _time, status):
         # 'frames' and 'time' are part of the API; unused here.
-        # If the driver reports an over/underrun, skip this chunk.
+
         if status:
             return
         if indata.size:
             self._buf.append(indata.copy())
 
     def start(self):
+
+        if self._stream is not None:
+            self.speaker.speak("(already recording)")
+            return
+
         self._buf = []
         self._stream = sd.InputStream(
             samplerate=self.sr,
@@ -40,7 +53,7 @@ class STT:
         self._stream.start()
 
     def stop(self) -> str:
-        if not self._stream:
+        if self._stream is None:
             return ""
 
         try:
@@ -69,6 +82,35 @@ class STT:
         # free memory for next run
         self._buf = []
         return text
+    
+
+    # ---- hotkey activation----
+    def on_press(self, key) -> str:
+
+        def is_f9(key):
+            return (
+                key == keyboard.Key.f9
+                or getattr(key, "vk", None) == 120  # F9 virtual key
+                or getattr(key, "name", None) == "f9"
+            )
+
+
+        if is_f9(key):
+            if self._stream is None:
+                try:
+                    self.start()
+
+                except Exception as e:
+                    print("Could not start recording:", e)
+                    self.speaker.speak("Hmmm...something went wrong!")
+            else:
+                try:
+                    text = self.stop()
+                    print("Transcript:", repr(text))
+                    print("Press F9 to start again.")
+
+                except Exception as e:
+                    print("Could not stop/transcribe:", e)
 
 
 model = WhisperModel("small", device="cpu", compute_type="int8")
@@ -81,23 +123,9 @@ stt = STT(model, sample_rate=16000)
 # print("Transcript:", repr(text))
 
 
-def on_press(key):
-    if key == keyboard.Key.f9:
-        if stt._stream is None:  # not recording yet
-            try:
-                stt.start()
-                print("Recording started with F9. Press Enter to stop…")
-            except Exception as e:
-                print("Could not start recording:", e)
-        else:
-            print("(already recording)")
-
-listener = keyboard.Listener(on_press=on_press)
-listener.start()  # runs in background
 
 print("Press F9 to start recording, then press Enter to stop.")
-input()  # stop when you’re done speaking
-text = stt.stop()
-print("Transcript:", repr(text))
+# input()  # stop when you’re done speaking
+# text = stt.stop()
+# print("Transcript:", repr(text))
 
-listener.stop()
