@@ -30,3 +30,9 @@ try:
         time.sleep(1)
 except KeyboardInterrupt:
     stt.shutdown()
+
+# import pyttsx3
+# engine = pyttsx3.init()
+# voices = engine.getProperty("voices")
+# for i, v in enumerate(voices):
+#     print(i, "| id:", v.id, "| name:", v.name)
