@@ -9,6 +9,7 @@ from pywinauto.controls.uiawrapper import UIAWrapper
 from pywinauto.win32functions import SetProcessDPIAware
 from PIL import ImageGrab
 
+from speech.tts import *
 
 
 class UIManager:
@@ -18,6 +19,7 @@ class UIManager:
         SetProcessDPIAware()  # avoid blurry crops on high-DPI
 
         self.util = Utils()
+        self.tts = TTS()
 
         self.active_window = gw.getActiveWindow()
         self.app = Application(backend="uia").connect(title=self.active_window.title, visible_only=False)
@@ -76,19 +78,22 @@ class UIManager:
 
 
             if element_data["control_type"] == "Edit":
+
                 print("Yes, it's an Edit control")
                 element.set_focus()
                 element.type_keys("^a{BACKSPACE}")
+
                 print("Doing...")
                 element.type_keys(str(element_data["value"]), with_spaces=True, set_foreground=True)
                 print("Done!")
 
-                self.util.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
-                # self.util.speak(f"Verified -- the {element_data['title']} element is present, typing {element_data['value']} into it now.")
+                self.tts.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
+                # self.tts.speak(f"Verified -- the {element_data['title']} element is present, typing {element_data['value']} into it now.")
+                
                 return 1
 
-            self.util.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
-            # self.util.speak(f"Verified -- the {element_data['title']} element is present, clicking on it now.")
+            self.tts.speak(f"Prediction -- {element_data['title']} -- {element_data['reason']}")
+            # self.tts.speak(f"Verified -- the {element_data['title']} element is present, clicking on it now.")
 
             element.click_input()
             print(f"Clicked on element using control_type='{element_data['control_type']}' and title='{element_data['title']}'.")
@@ -98,13 +103,3 @@ class UIManager:
         except Exception as e:
             print("Error:", e)
             return 0
-
-# obj = UIManager()
-# # element_data = {
-
-# #     "title": "Aptos (Body)",
-# #     "control_type": "Edit",
-# # }
-# # obj.simulate(element_data)
-
-# obj.get_screenshot()
