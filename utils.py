@@ -13,6 +13,7 @@ class Utils:
         # Function to speak text
         self.engine = pyttsx3.init()
         default_rate = self.engine.getProperty("rate")  # often ~200
+        self.set_voice_by_name("Zira")   # or "David"
         self.engine.setProperty("rate", 50)
 
         # Threading
@@ -24,17 +25,25 @@ class Utils:
         # Listening state
         self.listening = False
         self.audio_data = None
-        self.listen_thread = None
-
-        
+        self.listen_thread = None  
 
         self.pron_map = {
             r"\bOLLA\b": "Oh-lah", 
         }
 
-
         # keyboard.add_hotkey("ctrl+shift+Z", self._shortcut_action)
         # self.speak("Hi, I am OLLA! Press Ctrl+Shift+Z to start listening.")
+    
+    def set_voice_by_name(self, contains: str):
+
+        voices = self.engine.getProperty("voices")
+
+        for v in voices:
+            if contains.lower() in (v.name or "").lower() or contains.lower() in (v.id or "").lower():
+                self.engine.setProperty("voice", v.id)
+                return True
+        return False
+
 
     def _apply_pronunciations(self, text: str) -> str:
 
