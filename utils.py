@@ -3,6 +3,7 @@ import time
 import speech_recognition as sr
 import threading
 import keyboard
+import re
 
 
 class Utils:
@@ -20,13 +21,34 @@ class Utils:
         self.audio_data = None
         self.listen_thread = None
 
+        self.pron_map = {
+            r"\bOLLA\b": "Oh-lah", 
+        }
+
+
         # keyboard.add_hotkey("ctrl+shift+Z", self._shortcut_action)
         # self.speak("Hi, I am OLLA! Press Ctrl+Shift+Z to start listening.")
+
+    def _apply_pronunciations(self, text: str) -> str:
+
+        if not text:
+            return text
+        
+        out = text
+
+        for pattern, replacement in self.pron_map.items():
+            out = re.sub(pattern, replacement, out, flags=re.IGNORECASE)
+
+        return out
+
     
     def speak(self, text: str, *, flush=True):
 
         if not text:
             return
+        
+        text = self._apply_pronunciations(text)
+
         with self.lock:
             try:
                 if flush:
