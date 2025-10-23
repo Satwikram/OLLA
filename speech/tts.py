@@ -1,5 +1,3 @@
-import time
-import speech_recognition as sr
 import threading
 import re
 
