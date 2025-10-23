@@ -27,6 +27,7 @@ class STT:
             input_device: int | None = None,    # sounddevice input device index
             hotkey: str = "f9",
             verbose: bool = True,
+            language: str | None = "en",
             ):
     
         self.on_transcript = on_transcript or (lambda s: print("Transcript:", repr(s)))
@@ -35,6 +36,7 @@ class STT:
         self.input_device = input_device
         self.hotkey = hotkey.lower()
         self.verbose = verbose
+        self.language = language
 
 
         self._buf: list[np.ndarray] = []
@@ -169,8 +171,15 @@ class STT:
                 wav_path,
                 vad_filter=True,
                 beam_size=1,
+                language=self.language,
+                task="transcribe",
+                condition_on_previous_text=False,
+                temperature=0.0,
+                without_timestamps=True
             )
+
             text = " ".join(s.text for s in segs).strip()
+            
         finally:
             if wav_path and os.path.exists(wav_path):
                 os.unlink(wav_path)
