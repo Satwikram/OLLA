@@ -9,8 +9,13 @@ import re
 class Utils:
 
     def __init__(self):
+
         # Function to speak text
         self.engine = pyttsx3.init()
+        default_rate = self.engine.getProperty("rate")  # often ~200
+        self.engine.setProperty("rate", 50)
+
+        # Threading
         self.lock = threading.RLock()
 
         # Speech recognition
@@ -20,6 +25,8 @@ class Utils:
         self.listening = False
         self.audio_data = None
         self.listen_thread = None
+
+        
 
         self.pron_map = {
             r"\bOLLA\b": "Oh-lah", 
