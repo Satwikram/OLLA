@@ -1,7 +1,7 @@
 from llm import MultiAgent
 from ui_automation.ui_manager import *
 import json
-import queue
+from speech.stt import STT
 
 
 from utils import *
@@ -18,8 +18,10 @@ config = {"configurable": {"thread_id": id}}
 steps = []
 
 def predict_action(query):
+    print("HMM")
 
     ui_tree = obj2.get_ui_tree()
+    print(ui_tree)
 
     output = obj1.get_solver_response(query, ui_tree, config)
     content = output.content
@@ -41,24 +43,36 @@ def predict_action(query):
     else:
         print("Did not find any relevant control element")
 
+def on_transcript(transcript: str):
+
+    tts = TTS()
+    feedback = f"I heard: {transcript}"
+    print(feedback)
+    tts.speak(feedback)
+    # tts.speak("Thinking......")
+    predict_action(transcript)
+    print(steps)
+
 
 def main():
-
-    import multiprocessing
-    multiprocessing.freeze_support()  
-
-    import pythoncom, pywintypes
-    _ = (pythoncom, pywintypes)  # ensure pywin32 is loaded properly
 
     # query = "Task: Change Margins to Narrow"
     # query = "Task: Change the font size to 10"
     # query = "Task: Add a new comment with text 'Check this section'"
     # query = "Task: Center the alignment for the text"
     # query = "Task: Change the mode to Reviewing"
-    query = "Task: Insert a table with 8 rows and 6 columns"
+    # query = "Task: Insert a table with 8 rows and 6 columns"
 
-    predict_action(query)
-    print(steps)
+    # predict_action(query)
+    # print(steps)
+
+    stt = STT(on_transcript=on_transcript, model_name="small", device="cpu", compute_type="int8")
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        stt.shutdown()
 
 if __name__ == "__main__":
     main()
