@@ -18,10 +18,18 @@ from speech.tts import *
 # with open("ui_tree.txt", "w+", encoding="utf-8") as f:
 #     f.write(tree)
 
+def test():
+    while True:
+        a = 10
+        b = 20
+        print(a + b)
+        time.sleep(5)
+
 def got_text(transcript: str):
     obj = TTS()
     print(transcript)
     obj.speak(transcript)
+    test()
 
 stt = STT(on_transcript=got_text, model_name="small", device="cpu", compute_type="int8")
 
