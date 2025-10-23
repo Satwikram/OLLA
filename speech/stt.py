@@ -194,6 +194,7 @@ class STT:
         return text
     
     def _is_hotkey(self, key) -> bool:
+
         # Accept Key.fX, name='fx', or Windows VK for F-keys
         if isinstance(key, keyboard.Key) and str(key) == f"Key.{self.hotkey}":
             return True
@@ -206,10 +207,10 @@ class STT:
 
 
     def _on_release(self, key):
+
         if not self._is_hotkey(key):
             return
 
-        # If recording -> spawn worker to stop+transcribe
         with self._lock:
             recording = self._stream is not None
             if recording and self._transcribing:
@@ -237,18 +238,20 @@ class STT:
             return self._stream is not None
 
     def shutdown(self):
+
         with self._lock:
             stream = self._stream
             self._stream = None
+
         if stream is not None:
             try:
                 stream.stop()
                 stream.close()
             except Exception:
                 pass
+
         if self._listener is not None:
             self._listener.stop()
-
 
 
 # print("Recording… press Enter to stop.")
