@@ -30,4 +30,3 @@ try:
         time.sleep(1)
 except KeyboardInterrupt:
     stt.shutdown()
-
