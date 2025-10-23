@@ -13,7 +13,7 @@ class TTS:
         self.engine = pyttsx3.init()
         default_rate = self.engine.getProperty("rate")  # often ~200
         self.set_voice()
-        self.engine.setProperty("rate", 50)
+        self.engine.setProperty("rate", 150)
 
         # Threading
         self.lock = threading.RLock()
