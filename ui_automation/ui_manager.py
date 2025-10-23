@@ -56,7 +56,7 @@ class UIManager:
         """
         try:
             control = self.window.child_window(title=element["title"], control_type=element["control_type"])
-            control.wait('exists', timeout=5)
+            control.wait('exists', timeout=3)
             properties = control.get_properties()
             return properties
         except Exception as e:
