@@ -13,7 +13,7 @@ class Utils:
         # Function to speak text
         self.engine = pyttsx3.init()
         default_rate = self.engine.getProperty("rate")  # often ~200
-        self.set_voice_by_name("Zira")   # or "David"
+        self.set_voice()
         self.engine.setProperty("rate", 50)
 
         # Threading
@@ -34,15 +34,30 @@ class Utils:
         # keyboard.add_hotkey("ctrl+shift+Z", self._shortcut_action)
         # self.speak("Hi, I am OLLA! Press Ctrl+Shift+Z to start listening.")
     
-    def set_voice_by_name(self, contains: str):
+    def set_voice(self, preferred=("Zira", "David"), locale_hint=("EN-US","EN_","EN ")):
 
         voices = self.engine.getProperty("voices")
 
+        for want in preferred:
+            for v in voices:
+                name = (v.name or "").lower()
+                vid  = (v.id or "").lower()
+                if want.lower() in name or want.lower() in vid:
+                    self.engine.setProperty("voice", v.id)
+                    return v
+                
+        # Try locale hint (any English voice)
         for v in voices:
-            if contains.lower() in (v.name or "").lower() or contains.lower() in (v.id or "").lower():
+            meta = f"{v.id} {v.name}".upper()
+            if any(h in meta for h in locale_hint):
                 self.engine.setProperty("voice", v.id)
-                return True
-        return False
+                return v
+            
+        # Fallback: first available
+        if voices:
+            self.engine.setProperty("voice", voices[0].id)
+            return voices[0]
+        return None
 
 
     def _apply_pronunciations(self, text: str) -> str:
