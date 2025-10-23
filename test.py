@@ -1,6 +1,7 @@
 # from ui_automation.ui_manager import UIManager
 from utils import Utils
-from speech.speech_to_text import *
+from speech.stt import *
+from speech.tts import *
 
 # obj = UIManager()
 # # element_data = {
@@ -18,7 +19,7 @@ from speech.speech_to_text import *
 #     f.write(tree)
 
 def got_text(transcript: str):
-    obj = Utils()
+    obj = TTS()
     print(transcript)
     obj.speak(transcript)
 
