@@ -73,5 +73,10 @@ def main():
     except KeyboardInterrupt:
         stt.shutdown()
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
+
+query = "Task: Insert a table with 8 rows and 6 columns"
+
+predict_action(query)
+print(steps)
