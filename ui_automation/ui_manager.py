@@ -11,7 +11,6 @@ from PIL import ImageGrab
 
 from speech.tts import *
 
-
 class UIManager:
 
     def __init__(self):
