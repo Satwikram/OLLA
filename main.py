@@ -18,7 +18,6 @@ config = {"configurable": {"thread_id": id}}
 steps = []
 
 def predict_action(query):
-    print("HMM")
 
     ui_tree = obj2.get_ui_tree()
     print(ui_tree)
