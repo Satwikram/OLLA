@@ -7,6 +7,14 @@ import soundfile as sf
 from pynput import keyboard
 from faster_whisper import WhisperModel
 from utils import Utils
+from pathlib import Path
+import sys
+
+
+def local_model_dir():
+    if hasattr(sys, "_MEIPASS"):
+        return Path(sys._MEIPASS) / "speech" / "models" / "small"
+    return Path(__file__).parent / "models" / "small"
 
 
 class STT:
@@ -31,7 +39,7 @@ class STT:
             ):
     
         self.on_transcript = on_transcript or (lambda s: print("Transcript:", repr(s)))
-        self.model = model or WhisperModel(model_name, device=device, compute_type=compute_type)
+        self.model = model or WhisperModel(str(local_model_dir()), device=device, compute_type=compute_type)
         self.sr = sample_rate
         self.input_device = input_device
         self.hotkey = hotkey.lower()
