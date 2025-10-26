@@ -44,8 +44,10 @@ import time
 from speech.tts import TTS
 obj = TTS()
 obj.speak("This is a test message!")
-time.sleep(5)
-obj.speak("This is a test message agin!")
+time.sleep(2)
+print("Obj2")
+obj1 = TTS()
+obj1.speak("This is a test message agin!")
 time.sleep(5)
 obj.speak("This is a test message, yet again!")
 obj.wait_idle()

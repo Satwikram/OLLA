@@ -2,9 +2,17 @@ from llm import MultiAgent
 from ui_automation.ui_manager import *
 import json
 from speech.stt import STT
-
+import time, queue, threading, os, tempfile, logging
+from package.tray import start_tray_in_thread
 
 from utils import *
+
+
+LOG_PATH = os.path.join(tempfile.gettempdir(), "olla.log")
+logging.basicConfig(filename=LOG_PATH, level=logging.INFO, format="%(asctime)s %(message)s")
+
+inbox: "queue.Queue[str]" = queue.Queue()
+busy_event = threading.Event()
 
 # --- Global objects ---
 
@@ -48,12 +56,33 @@ def on_transcript(transcript: str):
     feedback = f"I heard: {transcript}"
     print(feedback)
     tts.speak(feedback)
+
+    query = f"Task: {transcript}"
     # tts.speak("Thinking......")
-    predict_action(transcript)
+    inbox.put(query)
+    logging.info("Enqueued: %s", query)
+
+    predict_action(query)
+
     print(steps)
+
+def worker():
+    while True:
+        q = inbox.get()
+        busy_event.set()
+        try:
+            result = predict_action(q)
+            logging.info("Result: %s", result)
+        except Exception as e:
+            logging.exception("predict_action error: %s", e)
+        finally:
+            busy_event.clear()
+            inbox.task_done()
 
 
 def main():
+
+    threading.Thread(target=worker, daemon=True).start()
 
     # query = "Task: Change Margins to Narrow"
     # query = "Task: Change the font size to 10"
@@ -65,7 +94,9 @@ def main():
     # predict_action(query)
     # print(steps)
 
-    stt = STT(on_transcript=on_transcript, model_name="small", device="cpu", compute_type="int8")
+    stt = STT(on_transcript=on_transcript, model_name="speech/models/small", device="cpu", compute_type="int8")
+
+    start_tray_in_thread(stt, busy_event=busy_event, log_path=LOG_PATH, title="OLLA")
 
     try:
         while True:
@@ -73,10 +104,10 @@ def main():
     except KeyboardInterrupt:
         stt.shutdown()
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 
-query = "Task: Insert summation symbol"
+# query = "Task: Insert summation symbol"
 
-predict_action(query)
-print(steps)
+# predict_action(query)
+# print(steps)
