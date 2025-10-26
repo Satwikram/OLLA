@@ -27,6 +27,7 @@ dependencies = [
     "faster-whisper (>=1.2.0,<2.0.0)",
     "sounddevice (>=0.5.3,<0.6.0)",
     "soundfile (>=0.13.1,<0.14.0)",
+    "pystray (>=0.19.5,<0.20.0)",
 ]
 [project.scripts]
 uia-bot = "main:main"
