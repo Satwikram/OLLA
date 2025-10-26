@@ -6,7 +6,8 @@ import time, queue, threading, os, tempfile, logging
 from package.tray import start_tray_in_thread
 
 from utils import *
-
+from dotenv import load_dotenv
+load_dotenv()
 
 LOG_PATH = os.path.join(tempfile.gettempdir(), "olla.log")
 logging.basicConfig(filename=LOG_PATH, level=logging.INFO, format="%(asctime)s %(message)s")
@@ -19,6 +20,7 @@ busy_event = threading.Event()
 obj1 = MultiAgent()
 obj2 = UIManager()
 obj3 = Utils()
+speech_model = os.environ.get("SPEECH_MODEL")
 
 id = obj3.time_id_ms()
 
@@ -94,7 +96,7 @@ def main():
     # predict_action(query)
     # print(steps)
 
-    stt = STT(on_transcript=on_transcript, model_name="speech/models/small", device="cpu", compute_type="int8")
+    stt = STT(on_transcript=on_transcript, model_name=speech_model, device="cpu", compute_type="int8")
 
     start_tray_in_thread(stt, busy_event=busy_event, log_path=LOG_PATH, title="OLLA")
 
