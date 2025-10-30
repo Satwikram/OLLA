@@ -41,13 +41,26 @@ import time
 # except KeyboardInterrupt:
 #     stt.shutdown()
 
-from speech.tts import TTS
-obj = TTS()
-obj.speak("This is a test message!")
-time.sleep(2)
-print("Obj2")
-obj1 = TTS()
-obj1.speak("This is a test message agin!")
-time.sleep(5)
-obj.speak("This is a test message, yet again!")
-obj.wait_idle()
+# from speech.tts import TTS
+# obj = TTS()
+# obj.speak("This is a test message!")
+# time.sleep(2)
+# print("Obj2")
+# obj1 = TTS()
+# obj1.speak("This is a test message agin!")
+# time.sleep(5)
+# obj.speak("This is a test message, yet again!")
+# obj.wait_idle()
+
+# sfx_beep.py
+import winsound
+
+def ok():        winsound.MessageBeep(winsound.MB_OK)             # system chime
+def warn():      winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
+def error():     winsound.MessageBeep(winsound.MB_ICONHAND)
+def beep(hz=890, ms=120): winsound.Beep(hz, ms)                   # custom tone
+
+# ok()
+# warn()
+# error()
+beep()
