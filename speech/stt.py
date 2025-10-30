@@ -11,10 +11,13 @@ from pathlib import Path
 import sys
 
 
-def local_model_dir():
+def local_model_dir() -> Path:
+    # In the packaged EXE (PyInstaller onefile) the assets are unpacked under sys._MEIPASS
     if hasattr(sys, "_MEIPASS"):
-        return Path(sys._MEIPASS) / "speech" / "models" / "small"
-    return Path(__file__).parent / "models" / "small"
+        return Path(sys._MEIPASS) / "assets" / "speech" / "models" / "small"
+    # Running from source
+    return Path(__file__).resolve().parents[1] / "assets" / "speech" / "models" / "small"
+
 
 
 class STT:
