@@ -98,7 +98,7 @@ def main():
 
     stt = STT(on_transcript=on_transcript, model_name=speech_model, device="cpu", compute_type="int8")
 
-    start_tray_in_thread(stt, busy_event=busy_event, log_path=LOG_PATH, title="OLLA")
+    # start_tray_in_thread(stt, busy_event=busy_event, log_path=LOG_PATH, title="OLLA")
 
     try:
         while True:
