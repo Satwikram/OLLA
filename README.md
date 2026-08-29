@@ -1,257 +1,61 @@
 # OLLA
 
-[![EMNLP 2026](https://img.shields.io/badge/EMNLP%202026-Main%20Conference-7B2CBF)](https://2026.emnlp.org/)
-![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB)
-![Platform](https://img.shields.io/badge/Platform-Windows-0078D6)
-![License](https://img.shields.io/badge/License-MIT-green)
-
-**OLLA** is a screen-reader-accessible interaction layer for computer-use agents (CUAs), designed to support blind users in completing desktop tasks through natural-language commands and nonvisual feedback. OLLA combines speech input, Windows UI Automation, language-model reasoning, structured actions, and text-to-speech feedback in an iterative observe–reason–act loop.
+**OLLA** is a screen-reader-accessible interaction layer for computer-use agents (CUAs), designed to support blind users in completing desktop tasks through natural-language commands and nonvisual feedback.
 
 This repository accompanies our **EMNLP 2026 Main Conference** paper:
 
 > **Are We There Yet? Assessing Computer-Use Agents for Blind Users' Accessible Interaction with Desktop Applications**  
 > Satwik Ram Kodandaram, Monalika Padma Reddy, Xiaojun Bi, Jiawei Zhou, I. Ramakrishnan, and Vikas Ashok  
 > *The 2026 Conference on Empirical Methods in Natural Language Processing (EMNLP 2026), Main Conference*  
-> **Budapest, Hungary · October 24–29, 2026 · HUNGEXPO Budapest Congress & Exhibition Center**
+> **Budapest, Hungary · October 24–29, 2026 · HUNGEXPO**
 
-Paper: [OpenReview](https://openreview.net/forum?id=3aPqf9cfWU) · Conference: [EMNLP 2026](https://2026.emnlp.org/)
+**Paper:** OpenReview  
+**Conference:** EMNLP 2026
+
+## Citation
+
+If you use OLLA in your research, please cite:
+
+```bibtex
+@inproceedings{kodandaram2026arewethereyet,
+  title     = {Are We There Yet? Assessing Computer-Use Agents for Blind Users' Accessible Interaction with Desktop Applications},
+  author    = {Kodandaram, Satwik Ram and Padma Reddy, Monalika and Bi, Xiaojun and Zhou, Jiawei and Ramakrishnan, I. and Ashok, Vikas},
+  booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  year      = {2026},
+  address   = {Budapest, Hungary},
+  publisher = {Association for Computational Linguistics}
+}
+```
+
+The citation will be updated with the final ACL Anthology identifier and page numbers after publication.
 
 ---
 
 ## Overview
 
-Most computer-use agents assume visually mediated interaction: users issue a command and then monitor screenshots, interface changes, or agent actions. OLLA provides a nonvisual interaction layer around this workflow so that blind screen-reader users can issue commands, receive spoken feedback, and interact with desktop applications without requiring direct visual monitoring.
+Computer-use agents combine language-based reasoning with interface grounding to interact with graphical user interfaces. However, most existing CUAs assume visually mediated interaction, requiring users to monitor screenshots, interface changes, or agent actions.
 
-OLLA is **not a new CUA reasoning architecture**. It is an accessibility layer over an underlying agent. The current implementation uses an LLM to reason over the active application's Microsoft UI Automation tree and produces a structured action that OLLA executes through `pywinauto`.
+OLLA provides an accessibility layer that enables blind screen-reader users to interact with CUAs nonvisually. Users can issue natural-language commands, receive spoken feedback about agent actions, and interact with desktop applications without directly monitoring the graphical interface.
 
-In the accompanying study, OLLA supported a three-week deployment with **8 blind screen-reader users**, yielding **1,258 participant-issued commands across 12 desktop applications**. The paper analyzes task success, partial completion, failure modes, and how blind users envision CUAs beyond end-to-end automation.
+OLLA is **not a new CUA reasoning architecture**. Instead, it provides an accessible interaction and execution layer around an underlying computer-use agent while preserving the agent's reasoning process.
 
----
+The current implementation integrates:
 
-## System Flow
+- natural-language and speech-based task input;
+- Microsoft UI Automation for observing desktop interfaces;
+- language-model-based interface reasoning;
+- structured UI-action generation;
+- programmatic action execution using `pywinauto`;
+- interaction history across execution steps; and
+- text-to-speech feedback for nonvisual interaction.
 
-```mermaid
-flowchart LR
-    A[User presses F9 and speaks a command] --> B[Local Faster-Whisper STT]
-    B --> C[OLLA Orchestrator]
-    C --> D[Microsoft UI Automation Tree]
-    D --> E[LLM Solver]
-    E --> F[Structured JSON Action]
-    F --> G[UI Action Executor]
-    G --> H[Spoken Feedback]
-    G -->|Task incomplete| D
-    G -->|Task complete| I[Stop]
-
-    E -. optional verification module .-> R[Reviewer Agent]
-```
-
-At each step, the solver selects a control from the current UI tree and returns a structured action containing the control type, title, value when applicable, bounding rectangle, rationale, and completion status. OLLA then executes the action and observes the resulting interface state before selecting the next action.
-
-The repository also exposes screenshot capture through `UIManager`; the default `main.py` execution loop currently grounds solver actions in the UI Automation tree.
+In the accompanying study, OLLA supported a three-week longitudinal deployment with **8 blind screen-reader users**, yielding **1,258 participant-issued commands across 12 desktop applications**.
 
 ---
 
-## Repository Structure
+## System Architecture
 
-```text
-OLLA-main/
-├── main.py                         # Main orchestration and interaction loop
-├── llm.py                          # Solver model and LangGraph state/memory
-├── reviewer.py                     # Optional action-verification agent
-├── utils.py                        # Shared speech/utilities
-│
-├── agents/
-│   ├── solver/
-│   │   ├── prompt.py               # Solver system prompt
-│   │   ├── few_shot_examples.py    # Few-shot UI-interaction examples
-│   │   ├── output.py               # Example structured outputs
-│   │   └── ui_tree.py              # Example UI-tree data
-│   └── reviewer/
-│       └── prompt.py               # Verification/redundancy prompt
-│
-├── ui_automation/
-│   └── ui_manager.py               # UI-tree extraction, screenshots, click/type actions
-│
-├── speech/
-│   ├── stt.py                      # Local Faster-Whisper speech-to-text
-│   ├── tts.py                      # Text-to-speech feedback
-│   └── hotkey.py                   # Global hotkey support
-│
-├── package/
-│   ├── tray.py                     # Optional Windows system-tray interface
-│   └── build.txt                   # PyInstaller build command
-│
-├── assets/
-│   ├── olla_tray.ico
-│   └── speech/models/small/        # Bundled local speech-recognition model
-│
-├── pyproject.toml                  # Dependencies and package metadata
-└── poetry.lock                     # Locked Python dependencies
-```
-
-### Core Modules
-
-| Module | Role |
-|---|---|
-| `main.py` | Coordinates speech input, UI observation, model calls, action execution, and task progression. |
-| `llm.py` | Implements the solver using LangChain/LangGraph and maintains interaction history through a checkpointed message state. |
-| `agents/solver/` | Defines the UI-grounding prompt, output schema, and few-shot examples used by the solver. |
-| `ui_automation/ui_manager.py` | Connects to the active Windows application through the UIA backend, extracts control identifiers, captures screenshots, and executes click/type actions. |
-| `speech/stt.py` | Provides local hotkey-triggered speech recognition using Faster-Whisper. |
-| `speech/tts.py` | Provides spoken feedback using `pyttsx3`/Windows voices. |
-| `reviewer.py` | Implements an auxiliary verifier for checking solver selections against the current UI tree and detecting redundant actions or loops. |
-| `package/tray.py` | Provides an optional system-tray controller for listening state, TTS, logs, and exit. |
-
----
-
-## Requirements
-
-OLLA currently targets **Windows desktop applications** because its execution layer uses Microsoft UI Automation through `pywinauto`.
-
-- Windows 10/11
-- Python `>=3.11,<3.15`
-- [Poetry](https://python-poetry.org/)
-- A working microphone
-- An OpenAI API key for the current `llm.py` backend
-- A target application exposing controls through Microsoft UI Automation
-
-The speech-recognition model used by the current prototype is bundled under `assets/speech/models/small/` and runs locally through Faster-Whisper.
-
----
-
-## Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone <YOUR-REPOSITORY-URL>
-cd OLLA-main
-```
-
-### 2. Install Dependencies
-
-```bash
-poetry install
-```
-
-### 3. Configure Environment Variables
-
-OLLA loads environment variables from a `.env` file at startup using `python-dotenv`.
-
-Create a `.env` file in the repository root:
-
-```env
-OPENAI_API_KEY=your_openai_api_key
-MODEL=your_openai_model_id
-SPEECH_MODEL=small
-```
-
-The current implementation uses the following environment variables:
-
-| Variable | Required | Used By | Purpose |
-|---|---:|---|---|
-| `OPENAI_API_KEY` | Yes | OpenAI integration used by `llm.py` and `reviewer.py` | Authenticates requests to the OpenAI model backend. The variable is consumed automatically by the OpenAI/LangChain integration. |
-| `MODEL` | Yes | `llm.py`, `reviewer.py` | Specifies the model identifier passed to `init_chat_model(..., model_provider="openai")` for the solver and reviewer. |
-| `SPEECH_MODEL` | Currently optional | `main.py` | Specifies the speech-model setting passed when `STT` is initialized. In the current implementation, `speech/stt.py` directly loads the bundled model under `assets/speech/models/small/`, so changing this variable does not currently change the underlying Faster-Whisper checkpoint. |
-
-Example:
-
-```env
-OPENAI_API_KEY=sk-...
-MODEL=<model-id-used-for-your-run>
-SPEECH_MODEL=small
-```
-
-Do **not** commit API credentials to the repository.
-
-Add `.env` to `.gitignore`:
-
-```gitignore
-.env
-```
-
-For reproducibility, you can include a safe `.env.example` file:
-
-```env
-OPENAI_API_KEY=
-MODEL=
-SPEECH_MODEL=small
-```
-
-Users can then create their local configuration with:
-
-```bash
-copy .env.example .env
-```
-
-or manually create `.env` in the repository root.
-
----
-
-## Running OLLA
-
-```bash
-poetry run python main.py
-```
-
-The current `UIManager` connects to the window that is active when OLLA initializes. Bring the application you want OLLA to interact with to the foreground before starting the system.
-
-### Voice Interaction
-
-1. Press and release **F9** to begin recording.
-2. Speak a natural-language desktop command, for example:
-
-   > "Change the font size to 10."
-
-3. Press and release **F9** again to stop recording.
-4. OLLA transcribes the command locally.
-5. The system extracts the current UI Automation tree and sends the task context to the solver.
-6. The solver identifies an appropriate interface control and generates a structured action.
-7. OLLA provides spoken feedback and executes the action.
-8. If the task is incomplete, OLLA observes the updated interface state and continues the interaction loop.
-
----
-
-## Structured Agent Output
-
-The solver returns one JSON object per interaction step:
-
-```json
-{
-  "found": "Yes",
-  "control_type": "Edit",
-  "title": "Font Size",
-  "value": "10",
-  "rect": {
-    "left": 0,
-    "top": 0,
-    "right": 0,
-    "bottom": 0
-  },
-  "reason": "Brief justification for selecting this control.",
-  "complete": "Yes"
-}
-```
-
-The fields represent:
-
-| Field | Description |
-|---|---|
-| `found` | Whether the solver identified a relevant UI control. |
-| `control_type` | Microsoft UI Automation control type. |
-| `title` | Name or label of the selected interface control. |
-| `value` | Text or value to enter when applicable. |
-| `rect` | Bounding rectangle associated with the selected control. |
-| `reason` | Model rationale for selecting the control. |
-| `complete` | Whether the solver considers the requested task complete. |
-
-OLLA uses `control_type` and `title` to locate the corresponding UI Automation element. Edit controls are focused and updated through keyboard input, while other supported controls are activated through `click_input()`.
-
----
-
-## Observe–Reason–Act Loop
-
-OLLA follows an iterative interaction cycle:
+OLLA follows an iterative **observe–reason–act** interaction loop:
 
 ```text
 Participant Command
@@ -275,17 +79,380 @@ Task Complete?
 Observe again    Stop
 ```
 
-Interaction history is maintained across steps so that the solver can reason about previous actions and the current task state rather than treating every action independently.
+At each execution step:
 
-The optional reviewer module can additionally examine solver-selected actions against the current interface state and interaction history to identify redundant or potentially incorrect actions.
+1. OLLA observes the current desktop interface using Microsoft UI Automation.
+2. The current UI tree, participant-issued command, and recent interaction history are provided to the solver.
+3. The solver reasons over the observed application state and identifies a relevant interface control.
+4. The solver generates a structured action.
+5. OLLA executes the action through the UI Automation layer.
+6. The resulting application state is observed again.
+7. The loop continues until the solver determines that the task has been completed.
+
+OLLA also includes an auxiliary reviewer module that can verify solver-selected actions against the current interface state and interaction history.
+
+---
+
+## Repository Structure
+
+```text
+OLLA-main/
+├── main.py
+├── llm.py
+├── reviewer.py
+├── utils.py
+│
+├── agents/
+│   ├── solver/
+│   │   ├── prompt.py
+│   │   ├── few_shot_examples.py
+│   │   ├── output.py
+│   │   └── ui_tree.py
+│   │
+│   └── reviewer/
+│       └── prompt.py
+│
+├── ui_automation/
+│   └── ui_manager.py
+│
+├── speech/
+│   ├── stt.py
+│   ├── tts.py
+│   └── hotkey.py
+│
+├── package/
+│   ├── tray.py
+│   └── build.txt
+│
+├── assets/
+│   ├── olla_tray.ico
+│   └── speech/
+│       └── models/
+│           └── small/
+│
+├── pyproject.toml
+├── poetry.lock
+└── README.md
+```
+
+### Core Modules
+
+| Module | Description |
+|---|---|
+| `main.py` | Main OLLA orchestration loop. Coordinates speech input, interface observation, model inference, action execution, and task progression. |
+| `llm.py` | Initializes the solver model and manages interaction history using LangChain/LangGraph. |
+| `reviewer.py` | Implements the optional action-verification agent. |
+| `agents/solver/prompt.py` | Defines the system prompt used to ground model reasoning in the observed desktop interface. |
+| `agents/solver/few_shot_examples.py` | Contains examples of UI-grounded interaction for the solver. |
+| `agents/reviewer/prompt.py` | Defines the reviewer prompt used to examine generated actions. |
+| `ui_automation/ui_manager.py` | Connects to desktop applications using Microsoft UI Automation, extracts UI-tree information, captures screenshots, and executes actions. |
+| `speech/stt.py` | Implements local speech recognition using Faster-Whisper. |
+| `speech/tts.py` | Provides nonvisual spoken feedback using text-to-speech. |
+| `speech/hotkey.py` | Implements global keyboard hotkey handling. |
+| `package/tray.py` | Provides the optional Windows system-tray interface. |
+
+---
+
+## Requirements
+
+OLLA currently targets **Windows desktop applications** because its interface-observation and execution layer relies on Microsoft UI Automation.
+
+### System Requirements
+
+- Windows 10 or Windows 11
+- Python `>=3.11,<3.15`
+- Poetry
+- A working microphone for speech input
+- An OpenAI API key for the current model backend
+- A target application that exposes controls through Microsoft UI Automation
+
+The current speech-recognition implementation uses a locally stored Faster-Whisper model located under:
+
+```text
+assets/speech/models/small/
+```
+
+---
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone <YOUR-REPOSITORY-URL>
+cd OLLA-main
+```
+
+### 2. Install Dependencies
+
+OLLA uses Poetry for Python dependency management.
+
+```bash
+poetry install
+```
+
+---
+
+## Environment Configuration
+
+OLLA loads environment variables from a `.env` file using `python-dotenv`.
+
+Create a file named:
+
+```text
+.env
+```
+
+in the root of the repository.
+
+### Required Configuration
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+MODEL=your_model_identifier
+SPEECH_MODEL=small
+```
+
+### Environment Variables
+
+| Variable | Required | Used By | Description |
+|---|---:|---|---|
+| `OPENAI_API_KEY` | Yes | OpenAI/LangChain integration | API key used to authenticate requests to the configured OpenAI model. |
+| `MODEL` | Yes | `llm.py`, `reviewer.py` | Model identifier passed to the model initialization logic for the solver and reviewer. |
+| `SPEECH_MODEL` | Optional | `main.py` | Speech-model configuration passed when initializing speech recognition. |
+
+For example:
+
+```env
+OPENAI_API_KEY=sk-...
+MODEL=<model-id>
+SPEECH_MODEL=small
+```
+
+### Important Note About `SPEECH_MODEL`
+
+Although `main.py` currently reads the `SPEECH_MODEL` environment variable, the speech-recognition implementation in `speech/stt.py` directly loads the bundled Faster-Whisper checkpoint from:
+
+```text
+assets/speech/models/small/
+```
+
+Therefore, changing:
+
+```env
+SPEECH_MODEL=...
+```
+
+does **not currently change the underlying Faster-Whisper checkpoint** unless the model-loading logic in `speech/stt.py` is also modified.
+
+### Protecting API Credentials
+
+Do not commit your `.env` file to GitHub.
+
+Add the following to `.gitignore`:
+
+```gitignore
+.env
+```
+
+We recommend including a safe `.env.example` file in the repository:
+
+```env
+OPENAI_API_KEY=
+MODEL=
+SPEECH_MODEL=small
+```
+
+Users can then create their local environment configuration from this template.
+
+On Windows:
+
+```powershell
+copy .env.example .env
+```
+
+---
+
+## Running OLLA
+
+Start OLLA with:
+
+```bash
+poetry run python main.py
+```
+
+The current `UIManager` connects to the active Windows application.
+
+Before starting OLLA, bring the desktop application you want OLLA to interact with to the foreground.
+
+---
+
+## Using OLLA
+
+### Voice Interaction
+
+The current implementation uses **F9** to control speech recording.
+
+1. Bring the target application to the foreground.
+2. Start OLLA.
+3. Press and release **F9** to begin recording.
+4. Speak a natural-language task.
+5. Press and release **F9** again to stop recording.
+6. OLLA transcribes the command locally.
+7. OLLA extracts the current UI Automation tree.
+8. The solver reasons over the current interface state and generates an action.
+9. OLLA provides spoken feedback and executes the selected action.
+10. If the task is incomplete, OLLA observes the updated interface and continues execution.
+
+Example request:
+
+```text
+Change the font size to 10.
+```
+
+---
+
+## Interface Observation
+
+OLLA uses Microsoft UI Automation to construct a structured representation of the active application.
+
+The UI tree provides information about available controls, including properties such as:
+
+- control name;
+- control type;
+- interface hierarchy;
+- bounding rectangle; and
+- other UI Automation properties exposed by the application.
+
+This representation allows the model to reason about interface state without relying exclusively on visual pixel information.
+
+The repository also supports screenshot capture through `UIManager`. The default execution loop in `main.py` currently grounds solver actions primarily in the Microsoft UI Automation representation.
+
+---
+
+## Structured Agent Output
+
+The solver generates one structured JSON action at each execution step.
+
+An example output is:
+
+```json
+{
+  "found": "Yes",
+  "control_type": "Edit",
+  "title": "Font Size",
+  "value": "10",
+  "rect": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "reason": "The Font Size edit control is the relevant control for changing the requested formatting property.",
+  "complete": "Yes"
+}
+```
+
+### Output Fields
+
+| Field | Description |
+|---|---|
+| `found` | Indicates whether the solver identified an appropriate interface control. |
+| `control_type` | Microsoft UI Automation control type associated with the target. |
+| `title` | Name or label of the selected interface control. |
+| `value` | Text or value to enter when required by the action. |
+| `rect` | Bounding rectangle associated with the selected control. |
+| `reason` | Solver rationale for selecting the target control. |
+| `complete` | Indicates whether the solver considers the participant's task complete. |
+
+The generated information is passed to the action-execution layer.
+
+For editable controls, OLLA can focus the selected interface element and enter the requested value. Other supported controls can be activated through UI Automation operations such as `click_input()`.
+
+---
+
+## Interaction History
+
+OLLA maintains recent interaction history across execution steps.
+
+This allows the solver to reason over:
+
+- the participant's original command;
+- actions already attempted;
+- previously selected controls;
+- resulting interface states; and
+- whether additional actions are required.
+
+The execution process therefore operates as a multi-step interaction rather than treating each interface action independently.
+
+---
+
+## Reviewer Module
+
+The repository also contains a reviewer agent implemented in:
+
+```text
+reviewer.py
+```
+
+The reviewer can inspect the solver-selected action together with the current UI state and recent interaction history.
+
+Its role is to support verification of proposed actions, including identifying:
+
+- potentially incorrect control selections;
+- redundant actions;
+- repeated interaction patterns; and
+- non-progressing behavior.
+
+The reviewer is implemented as a separate module from the primary solver.
+
+---
+
+## Speech Recognition
+
+Speech-to-text functionality is implemented in:
+
+```text
+speech/stt.py
+```
+
+OLLA uses **Faster-Whisper** for local speech recognition.
+
+The bundled speech model is stored under:
+
+```text
+assets/speech/models/small/
+```
+
+Because recognition occurs locally, recorded speech does not need to be sent to the language-model provider as audio.
+
+The transcribed text is subsequently used as the participant's natural-language task command.
+
+---
+
+## Text-to-Speech Feedback
+
+Nonvisual spoken feedback is implemented in:
+
+```text
+speech/tts.py
+```
+
+OLLA uses text-to-speech to communicate system information and agent actions to the user.
+
+This enables blind users to monitor interaction without visually inspecting the application or OLLA interface.
 
 ---
 
 ## Building the Windows Executable
 
-The repository includes the PyInstaller configuration used for the standalone OLLA build in `package/build.txt`.
+The repository includes the PyInstaller configuration used to create a standalone Windows executable in:
 
-From PowerShell:
+```text
+package/build.txt
+```
+
+A representative build command is:
 
 ```powershell
 poetry run pyinstaller `
@@ -306,7 +473,7 @@ poetry run pyinstaller `
   main.py
 ```
 
-The resulting executable is written to:
+The generated executable is written to:
 
 ```text
 dist/OLLA.exe
@@ -316,78 +483,119 @@ dist/OLLA.exe
 
 ## Research Context
 
-The EMNLP 2026 paper uses OLLA as an accessibility layer for studying computer-use agents under authentic nonvisual desktop interaction.
+OLLA was developed to enable the study of computer-use agents under authentic nonvisual desktop interaction.
 
-The study investigates:
+The accompanying EMNLP 2026 paper investigates three questions:
 
-- how effectively CUAs complete participant-issued desktop tasks;
-- where grounding, planning, constraint tracking, and termination break down during nonvisual execution; and
-- how blind users envision agents supporting interface understanding, situated assistance, user-controlled execution, troubleshooting, and learning beyond full automation.
+1. How effectively do computer-use agents support blind users in completing everyday, real-world computer tasks?
+2. Where do CUAs break down during nonvisual task execution, and what do these breakdowns reveal about current agent limitations?
+3. How do blind users envision CUAs supporting everyday computer use beyond end-to-end automation?
 
-We conducted a three-week longitudinal deployment with **8 blind screen-reader users**, collecting **1,258 participant-issued commands across 12 desktop applications**.
+We conducted an IRB-approved three-week longitudinal deployment with **8 blind screen-reader users**.
 
-The paper additionally evaluates the same participant-issued commands across multiple CUA models under controlled conditions. Please refer to the paper for the experimental protocol, model configurations, annotation methodology, and quantitative results.
+Participants used OLLA during their regular desktop activities rather than completing only predefined laboratory tasks.
+
+The deployment yielded:
+
+- **1,258 participant-issued commands**
+- **12 desktop applications**
+- **304 normalized task intents**
+- screenshots;
+- Microsoft UI Automation trees;
+- model responses;
+- generated actions; and
+- interaction histories.
+
+The paper additionally evaluates the participant-issued commands across multiple computer-use models under controlled conditions.
+
+Please refer to the paper for the full study protocol, model configurations, annotation methodology, statistical analysis, and empirical findings.
 
 ---
 
-## Accessibility and Safety Notes
+## Accessibility
 
-OLLA is a **research prototype**, not a production automation system.
+OLLA was designed specifically to support nonvisual interaction with computer-use agents.
+
+The system incorporates mechanisms including:
+
+- screen-reader-compatible interaction;
+- keyboard-based activation;
+- natural-language commands;
+- speech input;
+- audio feedback; and
+- nonvisual monitoring of agent execution.
+
+These accessibility mechanisms enable blind users to interact with the underlying CUA but do not modify the reasoning process of the underlying model.
+
+---
+
+## Privacy and Safety
+
+OLLA is a **research prototype** and should not be treated as a production automation system.
 
 Agent-generated actions can modify:
 
-- application state,
-- documents,
-- settings,
-- files, and
+- application state;
+- documents;
+- application settings;
+- files; and
 - other interface content.
 
-We recommend testing OLLA with non-sensitive data and reversible tasks.
+We recommend evaluating OLLA first on reversible tasks and non-sensitive data.
 
-The current model backend may transmit the participant's natural-language command and UI-tree information to the configured model provider. UI trees can contain document text, control labels, filenames, and other application content. Review the privacy requirements of your deployment environment and model provider before using OLLA with sensitive information.
+Depending on the configured model backend, information provided to the model can include:
+
+- the participant's natural-language command;
+- UI Automation control names;
+- interface structure;
+- document or application text exposed through UI Automation; and
+- recent interaction history.
+
+UI Automation trees can contain sensitive information such as filenames, document content, control labels, and application data.
+
+Researchers and users should therefore review the privacy requirements of their deployment environment and configured model provider before using OLLA with sensitive information.
 
 Speech recognition is performed locally using Faster-Whisper in the current implementation.
 
 ---
 
-## Citation
-
-If you use OLLA in your research, please cite our EMNLP 2026 paper.
-
-```bibtex
-@inproceedings{kodandaram2026arewethereyet,
-  title     = {Are We There Yet? Assessing Computer-Use Agents for Blind Users' Accessible Interaction with Desktop Applications},
-  author    = {Kodandaram, Satwik Ram and Padma Reddy, Monalika and Bi, Xiaojun and Zhou, Jiawei and Ramakrishnan, I. and Ashok, Vikas},
-  booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
-  year      = {2026},
-  address   = {Budapest, Hungary},
-  publisher = {Association for Computational Linguistics}
-}
-```
-
-The citation can be updated with the final ACL Anthology identifier and page numbers after publication.
-
----
-
 ## Authors
 
-- Satwik Ram Kodandaram — Stony Brook University
-- Monalika Padma Reddy — Stony Brook University
-- Xiaojun Bi — Stony Brook University
-- Jiawei Zhou — Stony Brook University
-- I. Ramakrishnan — Stony Brook University
-- Vikas Ashok — Old Dominion University
+**Satwik Ram Kodandaram**  
+Stony Brook University
+
+**Monalika Padma Reddy**  
+Stony Brook University
+
+**Xiaojun Bi**  
+Stony Brook University
+
+**Jiawei Zhou**  
+Stony Brook University
+
+**I. Ramakrishnan**  
+Stony Brook University
+
+**Vikas Ashok**  
+Old Dominion University
 
 ---
 
 ## License
 
-This project is released under the **MIT License**, as specified in `pyproject.toml`.
+This project is released under the license specified in the repository.
 
 ---
 
 ## Acknowledgments
 
-We thank the blind participants who contributed their time and experiences to the study.
+We thank the blind participants who contributed their time and experiences to this research.
 
-OLLA builds on open-source tools including LangChain, LangGraph, `pywinauto`, Faster-Whisper, and `pyttsx3`.
+OLLA builds on open-source tools and libraries including:
+
+- LangChain;
+- LangGraph;
+- `pywinauto`;
+- Faster-Whisper;
+- `pyttsx3`; and
+- Microsoft UI Automation.
